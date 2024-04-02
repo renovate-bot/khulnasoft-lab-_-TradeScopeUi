@@ -1,0 +1,67 @@
+version: 2
+updates:
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: "daily"
+    time: "03:00"
+    timezone: "Etc/UTC"
+  open-pull-requests-limit: 10
+
+- package-ecosystem: docker
+  directory: "/.devcontainer/"
+  schedule:
+    interval: "daily"
+    time: "03:00"
+    timezone: "Etc/UTC"
+  open-pull-requests-limit: 10
+
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: "weekly"
+    day: "wednesday"
+    time: "03:00"
+    timezone: "Etc/UTC"
+  open-pull-requests-limit: 20
+  target-branch: main
+  groups:
+    eslint:
+      dependency-type: "development"
+      patterns:
+        - "eslint"
+        - "eslint-*"
+        - "@typescript-eslint/*"
+        - "@vue/eslint-*"
+    vue:
+      patterns:
+        - "@vue/*"
+        - "vue-*"
+        - "vue"
+        - "pinia*"
+      exclude-patterns:
+        - "*eslint*"
+        - "vue-echarts"
+    vueuse:
+      patterns:
+        - "@vueuse/*"
+    bootstrap:
+      patterns:
+        - "bootstrap*"
+    unplugin:
+      patterns:
+        - "unplugin*"
+    date-fns:
+      patterns:
+        - "date-fns*"
+
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly"
+    day: "thursday"
+    time: "03:00"
+    timezone: "Etc/UTC"
+  open-pull-requests-limit: 10
+  target-branch: main

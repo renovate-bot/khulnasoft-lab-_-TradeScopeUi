@@ -1,0 +1,12 @@
+---
+version: '3.8'
+services:
+  frequi:
+    build:
+      context: .
+      dockerfile: "./Dockerfile"
+    image: frequi
+    # image: freqtradeorg/frequi:main
+    restart: unless-stopped
+    ports:
+      - "3000:80"

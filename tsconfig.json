@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "es2020",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "baseUrl": "src",
+    "types": [
+      "cypress",
+      "vite/client",
+      "unplugin-icons/types/vue",
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "cypress/support/*.ts",
+    "components.d.ts",
+  ],
+  "exclude": [
+      "node_modules",
+      // "tests"
+  ],
+  "vueCompilerOptions": {
+    "target": 3,
+    "experimentalModelPropName": {
+      "": {
+        "b-form-radio": true
+      },
+    }
+  }
+}
