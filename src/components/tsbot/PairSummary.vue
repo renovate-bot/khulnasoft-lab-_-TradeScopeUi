@@ -33,7 +33,7 @@
 import { formatPercent, timestampms } from '@/shared/formatters';
 import { Lock, Trade } from '@/types';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 interface CombinedPairList {
   pair: string;

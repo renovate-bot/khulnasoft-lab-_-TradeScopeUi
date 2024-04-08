@@ -253,7 +253,7 @@ export class UserService {
         accessToken,
         autoRefresh,
       };
-      const x = new UserService('ftbot.0');
+      const x = new UserService('tsbot.0');
       x.storeLoginInfo(loginInfo);
     }
 

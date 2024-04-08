@@ -2,7 +2,7 @@ export function setLoginInfo() {
   localStorage.setItem(
     'ftAuthLoginInfo',
     JSON.stringify({
-      'ftbot.0': {
+      'tsbot.0': {
         botName: 'TestBot',
         apiUrl: 'http://localhost:3000',
         accessToken: 'access_token_tesst',
@@ -11,7 +11,7 @@ export function setLoginInfo() {
       },
     }),
   );
-  localStorage.setItem('ftSelectedBot', 'ftbot.0');
+  localStorage.setItem('ftSelectedBot', 'tsbot.0');
 }
 
 export function defaultMocks() {

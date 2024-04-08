@@ -185,8 +185,8 @@ export interface StrategyResult {
   timeframe: string;
 }
 
-export interface FreqAIModelListResult {
-  freqaimodels: string[];
+export interface TradeAIModelListResult {
+  tradeaimodels: string[];
 }
 
 export interface AvailablePairPayload {
@@ -216,7 +216,7 @@ export interface PairHistoryPayload {
   timeframe: string;
   timerange: string;
   strategy: string;
-  freqaimodel?: string;
+  tradeaimodel?: string;
 }
 
 export interface PairHistory {

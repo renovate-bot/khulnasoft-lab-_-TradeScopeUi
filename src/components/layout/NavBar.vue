@@ -2,8 +2,8 @@
   <header>
     <b-navbar toggleable="sm" dark variant="primary">
       <router-link class="navbar-brand" exact to="/">
-        <img class="logo" src="@/assets/freqtrade-logo.png" alt="Home Logo" />
-        <span class="navbar-brand-title d-sm-none d-md-inline">Freqtrade UI</span>
+        <img class="logo" src="@/assets/tradescope-logo.png" alt="Home Logo" />
+        <span class="navbar-brand-title d-sm-none d-md-inline">Tradescope UI</span>
       </router-link>
 
       <!-- TODO: For XS breakpoint, this should be here...  -->
@@ -134,7 +134,7 @@ import Favico from 'favico.js';
 
 import { OpenTradeVizOptions, useSettingsStore } from '@/stores/settings';
 import { useLayoutStore } from '@/stores/layout';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { useRoute } from 'vue-router';
 
 const botStore = useBotStore();
@@ -180,7 +180,7 @@ const resetDynamicLayout = (): void => {
   }
 };
 const setTitle = () => {
-  let title = 'freqUI';
+  let title = 'tradeUI';
   if (settingsStore.openTradesInTitle === OpenTradeVizOptions.asTitle) {
     title = `(${botStore.activeBotorUndefined?.openTradeCount}) ${title}`;
   }

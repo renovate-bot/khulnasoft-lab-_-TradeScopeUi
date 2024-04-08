@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { Trade } from '@/types';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 const props = defineProps({
   trades: { required: true, type: Array as () => Trade[] },

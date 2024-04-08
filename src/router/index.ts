@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import { initBots, useBotStore } from '@/stores/ftbotwrapper';
+import { initBots, useBotStore } from '@/stores/tsbotwrapper';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,33 +12,33 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/trade',
-    name: 'Freqtrade Trading',
+    name: 'Tradescope Trading',
     component: () => import('@/views/TradingView.vue'),
   },
   {
     path: '/graph',
-    name: 'Freqtrade Graph',
+    name: 'Tradescope Graph',
     component: () => import('@/views/ChartsView.vue'),
   },
   {
     path: '/logs',
-    name: 'Freqtrade Logs',
+    name: 'Tradescope Logs',
     component: () => import('@/views/LogView.vue'),
   },
   {
     path: '/backtest',
-    name: 'Freqtrade Backtest',
+    name: 'Tradescope Backtest',
     component: () => import('@/views/BacktestingView.vue'),
   },
   {
     path: '/dashboard',
-    name: 'Freqtrade Dashboard',
+    name: 'Tradescope Dashboard',
     component: () => import('@/views/DashboardView.vue'),
   },
   {
     path: '/balance',
-    name: 'Freqtrade Balance',
-    component: () => import('@/components/ftbot/BotBalance.vue'),
+    name: 'Tradescope Balance',
+    component: () => import('@/components/tsbot/BotBalance.vue'),
   },
   {
     path: '/open_trades',
@@ -52,11 +52,11 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/pairlist',
-    component: () => import('@/components/ftbot/PairListLive.vue'),
+    component: () => import('@/components/tsbot/PairListLive.vue'),
   },
   {
     path: '/settings',
-    name: 'Freqtrade Settings',
+    name: 'Tradescope Settings',
     component: () => import('@/views/SettingsView.vue'),
   },
   {

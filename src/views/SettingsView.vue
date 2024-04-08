@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <b-card header="FreqUI Settings">
+    <b-card header="TradeUI Settings">
       <div class="text-start d-flex flex-column gap-2">
         <p>UI Version: {{ settingsStore.uiVersion }}</p>
         <div class="d-flex flex-column border rounded p-2 mb-2 gap-2">

@@ -143,7 +143,7 @@
             :timerange="btStore.timerange"
             :pairlist="botStore.activeBot.selectedBacktestResult.pairlist"
             :trades="botStore.activeBot.selectedBacktestResult.trades"
-            :freqai-model="btStore.freqAI.enabled ? btStore.freqAI.model : undefined"
+            :tradeai-model="btStore.tradeAI.enabled ? btStore.tradeAI.model : undefined"
           />
         </div>
       </div>
@@ -154,7 +154,7 @@
 <script setup lang="ts">
 import { formatPercent } from '@/shared/formatters';
 import { useBtStore } from '@/stores/btStore';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 enum BtRunModes {
   run = 'run',

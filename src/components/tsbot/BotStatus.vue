@@ -1,7 +1,7 @@
 <template>
   <div v-if="botStore.activeBot.botState">
     <p>
-      Running Freqtrade <strong>{{ botStore.activeBot.version }}</strong>
+      Running Tradescope <strong>{{ botStore.activeBot.version }}</strong>
     </p>
     <p>
       Running with
@@ -88,7 +88,7 @@
 <script setup lang="ts">
 import { formatPercent, formatPriceCurrency } from '@/shared/formatters';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 const botStore = useBotStore();
 </script>

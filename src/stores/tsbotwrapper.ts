@@ -17,7 +17,7 @@ import {
   TimeSummaryOptions,
 } from '@/types';
 import { defineStore } from 'pinia';
-import { createBotSubStore } from './ftbot';
+import { createBotSubStore } from './tsbot';
 const AUTH_SELECTED_BOT = 'ftSelectedBot';
 
 export type BotSubStore = ReturnType<typeof createBotSubStore>;
@@ -26,7 +26,7 @@ export interface SubStores {
   [key: string]: BotSubStore;
 }
 
-export const useBotStore = defineStore('ftbot-wrapper', {
+export const useBotStore = defineStore('tsbot-wrapper', {
   state: () => {
     return {
       selectedBot: '',
@@ -49,10 +49,10 @@ export const useBotStore = defineStore('ftbot-wrapper', {
     nextBotId: (state) => {
       let botCount = Object.keys(state.availableBots).length;
 
-      while (`ftbot.${botCount}` in state.availableBots) {
+      while (`tsbot.${botCount}` in state.availableBots) {
         botCount += 1;
       }
-      return `ftbot.${botCount}`;
+      return `tsbot.${botCount}`;
     },
     allProfit: (state): Record<string, ProfitInterface> => {
       const result: Record<string, ProfitInterface> = {};

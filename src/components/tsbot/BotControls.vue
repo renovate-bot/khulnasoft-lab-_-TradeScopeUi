@@ -66,7 +66,7 @@ forceexit
 
 <script setup lang="ts">
 import MessageBox, { MsgBoxObject } from '@/components/general/MessageBox.vue';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { ForceSellPayload } from '@/types';
 
 import ForceEntryForm from './ForceEntryForm.vue';
@@ -93,7 +93,7 @@ const handleStopBot = () => {
 const handleStopBuy = () => {
   const msg: MsgBoxObject = {
     title: 'Stop Buying',
-    message: 'Freqtrade will continue to handle open trades.',
+    message: 'Tradescope will continue to handle open trades.',
     accept: () => {
       botStore.activeBot.stopBuy();
     },

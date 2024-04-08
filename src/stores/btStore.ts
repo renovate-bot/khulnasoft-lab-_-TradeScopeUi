@@ -13,7 +13,7 @@ export const useBtStore = defineStore('btStore', {
       allowCache: true,
       enableProtections: false,
       stakeAmountUnlimited: false,
-      freqAI: {
+      tradeAI: {
         enabled: false,
         model: '',
         identifier: '',

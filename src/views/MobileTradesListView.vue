@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 defineProps({
   history: { default: false, type: Boolean },

@@ -28,7 +28,7 @@ import { timestampms } from '@/shared/formatters';
 import { Lock } from '@/types';
 
 import { showAlert } from '@/shared/alerts';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { TableField } from 'bootstrap-vue-next';
 const botStore = useBotStore();
 
@@ -44,7 +44,7 @@ const removePairLock = (item: Lock) => {
   if (item.id !== undefined) {
     botStore.activeBot.deleteLock(item.id);
   } else {
-    showAlert('This Freqtrade version does not support deleting locks.');
+    showAlert('This Tradescope version does not support deleting locks.');
   }
 };
 </script>

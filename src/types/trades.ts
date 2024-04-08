@@ -25,7 +25,7 @@ export interface Order extends BTOrder {
 
 interface TradeBase {
   /**
-   * corresponds to the UI (ftbot.1) - does NOT relate to the backend!
+   * corresponds to the UI (tsbot.1) - does NOT relate to the backend!
    */
   botId: string;
   /**

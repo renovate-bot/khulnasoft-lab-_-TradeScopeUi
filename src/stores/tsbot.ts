@@ -38,7 +38,7 @@ import {
   BackgroundTaskStatus,
   Exchange,
   ExchangeListResult,
-  FreqAIModelListResult,
+  TradeAIModelListResult,
   PairlistEvalResponse,
   PairlistsPayload,
   PairlistsResponse,
@@ -106,7 +106,7 @@ export function createBotSubStore(botId: string, botName: string) {
         historyStatus: LoadingStatus.not_loaded,
         strategyPlotConfig: undefined as PlotConfig | undefined,
         strategyList: [] as string[],
-        freqaiModelList: [] as string[],
+        tradeaiModelList: [] as string[],
         exchangeList: [] as Exchange[],
         strategy: {} as StrategyResult,
         pairlist: [] as string[],
@@ -166,7 +166,7 @@ export function createBotSubStore(botId: string, botName: string) {
         }
         return false;
       },
-      botName: (state) => state.botState?.bot_name || 'freqtrade',
+      botName: (state) => state.botState?.bot_name || 'tradescope',
       allTrades: (state) => [...state.openTrades, ...state.trades] as Trade[],
       activeLocks: (state) => state.currentLocks?.locks || [],
     },
@@ -429,7 +429,7 @@ export function createBotSubStore(botId: string, botName: string) {
           });
           if (plotConfig.subplots === null) {
             // Subplots should not be null but an empty object
-            // TODO: Remove this fix when fix in freqtrade is populated further.
+            // TODO: Remove this fix when fix in tradescope is populated further.
             plotConfig.subplots = {};
           }
           this.strategyPlotConfig = plotConfig;
@@ -464,10 +464,10 @@ export function createBotSubStore(botId: string, botName: string) {
           return Promise.reject(error);
         }
       },
-      async getFreqAIModelList() {
+      async getTradeAIModelList() {
         try {
-          const { data } = await api.get<FreqAIModelListResult>('/freqaimodels');
-          this.freqaiModelList = data.freqaimodels;
+          const { data } = await api.get<TradeAIModelListResult>('/tradeaimodels');
+          this.tradeaiModelList = data.tradeaimodels;
           return Promise.resolve(data);
         } catch (error) {
           console.error(error);

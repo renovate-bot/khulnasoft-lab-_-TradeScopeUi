@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import { formatPercent, formatPrice } from '@/shared/formatters';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { BalanceValues } from '@/types';
 import { TableField } from 'bootstrap-vue-next';
 

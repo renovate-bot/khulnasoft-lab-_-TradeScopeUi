@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { formatPrice } from '@/shared/formatters';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { TableField } from 'bootstrap-vue-next';
 
 const botStore = useBotStore();
