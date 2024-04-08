@@ -2,13 +2,13 @@
   <div>
     <div class="w-100 d-flex">
       <b-form-select
-        id="freqaiModel-select"
-        v-model="locFreqaiModel"
-        :options="botStore.activeBot.freqaiModelList"
+        id="tradeaiModel-select"
+        v-model="locTradeaiModel"
+        :options="botStore.activeBot.tradeaiModelList"
       >
       </b-form-select>
       <div class="ms-2">
-        <b-button @click="botStore.activeBot.getFreqAIModelList">
+        <b-button @click="botStore.activeBot.getTradeAIModelList">
           <i-mdi-refresh />
         </b-button>
       </div>
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 const props = defineProps({
   modelValue: { type: String, required: true },
@@ -25,18 +25,18 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue']);
 const botStore = useBotStore();
 
-const locFreqaiModel = computed({
+const locTradeaiModel = computed({
   get() {
     return props.modelValue;
   },
-  set(freqaiModel: string) {
-    emit('update:modelValue', freqaiModel);
+  set(tradeaiModel: string) {
+    emit('update:modelValue', tradeaiModel);
   },
 });
 
 onMounted(() => {
-  if (botStore.activeBot.freqaiModelList.length === 0) {
-    botStore.activeBot.getFreqAIModelList();
+  if (botStore.activeBot.tradeaiModelList.length === 0) {
+    botStore.activeBot.getTradeAIModelList();
   }
 });
 </script>

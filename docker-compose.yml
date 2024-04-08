@@ -1,12 +1,12 @@
 ---
 version: '3.8'
 services:
-  frequi:
+  tradeui:
     build:
       context: .
       dockerfile: "./Dockerfile"
-    image: frequi
-    # image: freqtradeorg/frequi:main
+    image: tradeui
+    # image: khulnasoft/tradeui:main
     restart: unless-stopped
     ports:
       - "3000:80"

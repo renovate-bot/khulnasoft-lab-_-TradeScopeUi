@@ -74,7 +74,7 @@
 <script setup lang="ts">
 import { formatPrice, formatPercent } from '@/shared/formatters';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { ProfitInterface, ComparisonTableItems } from '@/types';
 import { TableField, TableItem } from 'bootstrap-vue-next';
 

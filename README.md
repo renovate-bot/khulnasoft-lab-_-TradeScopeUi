@@ -1,9 +1,9 @@
-# FreqUI
+# TradeUI
 
-[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/freqtrade/frequi)
-![FreqUI CI](https://github.com/freqtrade/frequi/workflows/FreqUI%20CI/badge.svg)
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/khulnasoft-lab/tradeui)
+![TradeUI CI](https://github.com/khulnasoft/tradeui/workflows/TradeUI%20CI/badge.svg)
 
-Freqtrade UI build with [Vue.js](https://vuejs.org/) and [boostrap-vue](https://bootstrap-vue.org/).
+Tradescope UI build with [Vue.js](https://vuejs.org/) and [boostrap-vue](https://bootstrap-vue.org/).
 
 ## WARNING
 
@@ -11,16 +11,16 @@ This project is still in its early stages (consider it alpha), and is not yet st
 
 ## Run this project
 
-Using FreqUI, does require [freqtrade](https://github.com/freqtrade/freqtrade) to be setup and running.
-In newer versions (2021.2 and newer), freqUI is builtin to freqtrade, so manual setup of freqUI will no longer be necessary unless you want to modify freqUI.
-Instructions for this end-user setup can be found in the [freqtrade API documentation](https://www.freqtrade.io/en/stable/rest-api/).
+Using TradeUI, does require [tradescope](https://github.com/khulnasoft/tradescope) to be setup and running.
+In newer versions (2021.2 and newer), tradeUI is builtin to tradescope, so manual setup of tradeUI will no longer be necessary unless you want to modify tradeUI.
+Instructions for this end-user setup can be found in the [tradescope API documentation](https://www.tradescope.io/en/stable/rest-api/).
 
 ## Developer project setup
 
-It will require [freqtrade](https://github.com/freqtrade/freqtrade) to be running on the same host with the API enabled under (`localhost:8080`). You can either use the webpack proxy (port can be changed in `vue.config.js`) - or connect directly to the API (recommended).
+It will require [tradescope](https://github.com/khulnasoft/tradescope) to be running on the same host with the API enabled under (`localhost:8080`). You can either use the webpack proxy (port can be changed in `vue.config.js`) - or connect directly to the API (recommended).
 
-You will also have to have CORS for freqtrade configured correctly based on the [freqtrade documentation](https://www.freqtrade.io/en/latest/rest-api/#cors).
-Most likely, the correct entry will be `http://localhost:3000` or `http://127.0.0.1:3000` - but the URL must match the URL you use to access FreqUI.
+You will also have to have CORS for tradescope configured correctly based on the [tradescope documentation](https://www.tradescope.io/en/latest/rest-api/#cors).
+Most likely, the correct entry will be `http://localhost:3000` or `http://127.0.0.1:3000` - but the URL must match the URL you use to access TradeUI.
 Ports can vary, so check the URL you're using.
 
 ### Project setup

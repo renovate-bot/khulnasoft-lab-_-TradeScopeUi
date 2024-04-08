@@ -12,8 +12,8 @@ export interface BacktestPayload {
   dry_run_wallet?: number;
   enable_protections?: boolean;
   backtest_cache?: string;
-  freqaimodel?: string;
-  freqai?: {
+  tradeaimodel?: string;
+  tradeai?: {
     identifier: string;
   };
 }

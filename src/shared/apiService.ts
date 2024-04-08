@@ -1,4 +1,4 @@
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import axios, { AxiosHeaders } from 'axios';
 import { UserService } from './userService';
 

@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { BotDescriptor } from '@/types';
 import type { CheckboxValue } from 'bootstrap-vue-next';
 

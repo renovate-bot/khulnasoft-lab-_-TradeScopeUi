@@ -149,7 +149,7 @@
 import { GridItemData } from '@/types';
 
 import { useLayoutStore, findGridLayout, TradeLayout } from '@/stores/layout';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 const botStore = useBotStore();
 const layoutStore = useLayoutStore();

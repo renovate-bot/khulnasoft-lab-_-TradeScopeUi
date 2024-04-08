@@ -108,7 +108,7 @@ import { useSettingsStore } from '@/stores/settings';
 import { ChartSliderPosition, LoadingStatus, PairHistory, Trade } from '@/types';
 import vSelect from 'vue-select';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 import { useColorStore } from '@/stores/colors';
 
@@ -122,7 +122,7 @@ const props = defineProps({
   timerange: { required: false, default: '', type: String },
   /** Only required if historicView is true */
   strategy: { required: false, default: '', type: String },
-  freqaiModel: { required: false, default: undefined, type: String },
+  tradeaiModel: { required: false, default: undefined, type: String },
   sliderPosition: {
     required: false,
     type: Object as () => ChartSliderPosition,
@@ -190,7 +190,7 @@ function refresh() {
         timeframe: props.timeframe,
         timerange: props.timerange,
         strategy: props.strategy,
-        freqaimodel: props.freqaiModel,
+        tradeaimodel: props.tradeaiModel,
       });
     } else {
       botStore.activeBot.getPairCandles({

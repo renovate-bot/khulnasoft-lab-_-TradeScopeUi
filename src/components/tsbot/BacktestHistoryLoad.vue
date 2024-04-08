@@ -10,7 +10,7 @@
     </button>
     <p>
       Load Historic results from disk. You can click on multiple results to load all of them into
-      freqUI.
+      tradeUI.
     </p>
     <div class="d-flex align-items-center">
       <b-form-group
@@ -107,7 +107,7 @@
 <script setup lang="ts">
 import MessageBox, { MsgBoxObject } from '@/components/general/MessageBox.vue';
 import { timestampms, timestampToTimeRangeString } from '@/shared/formatters';
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { BacktestHistoryEntry } from '@/types';
 import InfoBox from '../general/InfoBox.vue';
 

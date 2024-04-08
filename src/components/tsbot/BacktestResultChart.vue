@@ -51,7 +51,7 @@
         :trades="trades"
         class="flex-shrink-1 candle-chart-container w-100 px-0 h-100 align-self-stretch"
         :slider-position="sliderPosition"
-        :freqai-model="freqaiModel"
+        :tradeai-model="tradeaiModel"
       >
       </CandleChartContainer>
       <Transition name="fade">
@@ -71,14 +71,14 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 
 import { ChartSliderPosition, Trade } from '@/types';
 
 defineProps({
   timeframe: { required: true, type: String },
   strategy: { required: true, type: String },
-  freqaiModel: { required: false, default: undefined, type: String },
+  tradeaiModel: { required: false, default: undefined, type: String },
   timerange: { required: true, type: String },
   pairlist: { required: true, type: Array as () => string[] },
   trades: { required: true, type: Array as () => Trade[] },

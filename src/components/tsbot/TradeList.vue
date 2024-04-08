@@ -97,7 +97,7 @@
 import { formatPercent, formatPrice } from '@/shared/formatters';
 import { MultiDeletePayload, MultiForcesellPayload, Trade } from '@/types';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { useRouter } from 'vue-router';
 import { TableField, TableItem } from 'bootstrap-vue-next';
 
@@ -279,7 +279,7 @@ const onRowClicked = (item) => {
   if (item && item.trade_id !== botStore.activeBot.detailTradeId) {
     botStore.activeBot.setDetailTrade(item);
     if (props.multiBotView) {
-      router.push({ name: 'Freqtrade Trading' });
+      router.push({ name: 'Tradescope Trading' });
     }
   } else {
     botStore.activeBot.setDetailTrade(null);

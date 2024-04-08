@@ -119,7 +119,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { ForceEnterPayload, OrderSides } from '@/types';
 
 const props = defineProps({

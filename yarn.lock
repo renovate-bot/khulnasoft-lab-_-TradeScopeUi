@@ -3727,63 +3727,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"frequi@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "frequi@workspace:."
-  dependencies:
-    "@cypress/vite-dev-server": "npm:^5.0.7"
-    "@cypress/vue": "npm:^6.0.0"
-    "@iconify-json/mdi": "npm:^1.1.64"
-    "@noction/vue-draggable-grid": "npm:1.10.1"
-    "@popperjs/core": "npm:^2.11.8"
-    "@types/echarts": "npm:^4.9.22"
-    "@typescript-eslint/eslint-plugin": "npm:^7.4.0"
-    "@typescript-eslint/parser": "npm:^7.4.0"
-    "@vitejs/plugin-vue": "npm:^5.0.4"
-    "@vue/compiler-sfc": "npm:3.4.21"
-    "@vue/eslint-config-prettier": "npm:^9.0.0"
-    "@vue/eslint-config-typescript": "npm:^13.0.0"
-    "@vue/runtime-dom": "npm:^3.4.21"
-    "@vue/test-utils": "npm:^2.4.5"
-    "@vuepic/vue-datepicker": "npm:^8.3.1"
-    "@vueuse/core": "npm:^10.9.0"
-    "@vueuse/integrations": "npm:^10.9.0"
-    axios: "npm:^1.6.8"
-    bootstrap: "npm:^5.3.3"
-    bootstrap-vue-next: "npm:^0.16.6"
-    core-js: "npm:^3.36.1"
-    cypress: "npm:^13.7.1"
-    date-fns: "npm:^2.30.0"
-    date-fns-tz: "npm:^2.0.1"
-    echarts: "npm:^5.5.0"
-    eslint: "npm:^8.57.0"
-    eslint-plugin-prettier: "npm:^5.1.3"
-    eslint-plugin-vue: "npm:^9.24.0"
-    favico.js: "npm:^0.3.10"
-    humanize-duration: "npm:^3.30.0"
-    mutationobserver-shim: "npm:^0.3.7"
-    pinia: "npm:^2.1.7"
-    pinia-plugin-persistedstate: "npm:^3.2.1"
-    portal-vue: "npm:^3.0.0"
-    prettier: "npm:^3.2.5"
-    sass: "npm:^1.72.0"
-    sortablejs: "npm:^1.15.2"
-    typescript: "npm:~5.4.3"
-    unplugin-auto-import: "npm:^0.17.5"
-    unplugin-icons: "npm:^0.18.5"
-    unplugin-vue-components: "npm:^0.26.0"
-    vite: "npm:^5.2.6"
-    vitest: "npm:^1.4.0"
-    vue: "npm:^3.4.21"
-    vue-class-component: "npm:^7.2.5"
-    vue-demi: "npm:^0.14.7"
-    vue-echarts: "npm:^6.6.9"
-    vue-router: "npm:^4.3.0"
-    vue-select: "npm:^4.0.0-beta.6"
-    vue-tsc: "npm:^2.0.7"
-  languageName: unknown
-  linkType: soft
-
 "fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
@@ -6243,6 +6186,63 @@ __metadata:
   checksum: 10/cf148c359b638a7069fc3ba9a5257bdc9616a6948a98736b92c3570b3f8401cf9237a42bf716878b656f372a1fb65b74dd13a46ccff8eceba14ffd053d33f72a
   languageName: node
   linkType: hard
+
+"tradeui@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "tradeui@workspace:."
+  dependencies:
+    "@cypress/vite-dev-server": "npm:^5.0.7"
+    "@cypress/vue": "npm:^6.0.0"
+    "@iconify-json/mdi": "npm:^1.1.64"
+    "@noction/vue-draggable-grid": "npm:1.10.1"
+    "@popperjs/core": "npm:^2.11.8"
+    "@types/echarts": "npm:^4.9.22"
+    "@typescript-eslint/eslint-plugin": "npm:^7.4.0"
+    "@typescript-eslint/parser": "npm:^7.4.0"
+    "@vitejs/plugin-vue": "npm:^5.0.4"
+    "@vue/compiler-sfc": "npm:3.4.21"
+    "@vue/eslint-config-prettier": "npm:^9.0.0"
+    "@vue/eslint-config-typescript": "npm:^13.0.0"
+    "@vue/runtime-dom": "npm:^3.4.21"
+    "@vue/test-utils": "npm:^2.4.5"
+    "@vuepic/vue-datepicker": "npm:^8.3.1"
+    "@vueuse/core": "npm:^10.9.0"
+    "@vueuse/integrations": "npm:^10.9.0"
+    axios: "npm:^1.6.8"
+    bootstrap: "npm:^5.3.3"
+    bootstrap-vue-next: "npm:^0.16.6"
+    core-js: "npm:^3.36.1"
+    cypress: "npm:^13.7.1"
+    date-fns: "npm:^2.30.0"
+    date-fns-tz: "npm:^2.0.1"
+    echarts: "npm:^5.5.0"
+    eslint: "npm:^8.57.0"
+    eslint-plugin-prettier: "npm:^5.1.3"
+    eslint-plugin-vue: "npm:^9.24.0"
+    favico.js: "npm:^0.3.10"
+    humanize-duration: "npm:^3.30.0"
+    mutationobserver-shim: "npm:^0.3.7"
+    pinia: "npm:^2.1.7"
+    pinia-plugin-persistedstate: "npm:^3.2.1"
+    portal-vue: "npm:^3.0.0"
+    prettier: "npm:^3.2.5"
+    sass: "npm:^1.72.0"
+    sortablejs: "npm:^1.15.2"
+    typescript: "npm:~5.4.3"
+    unplugin-auto-import: "npm:^0.17.5"
+    unplugin-icons: "npm:^0.18.5"
+    unplugin-vue-components: "npm:^0.26.0"
+    vite: "npm:^5.2.6"
+    vitest: "npm:^1.4.0"
+    vue: "npm:^3.4.21"
+    vue-class-component: "npm:^7.2.5"
+    vue-demi: "npm:^0.14.7"
+    vue-echarts: "npm:^6.6.9"
+    vue-router: "npm:^4.3.0"
+    vue-select: "npm:^4.0.0-beta.6"
+    vue-tsc: "npm:^2.0.7"
+  languageName: unknown
+  linkType: soft
 
 "ts-api-utils@npm:^1.0.1":
   version: 1.0.3

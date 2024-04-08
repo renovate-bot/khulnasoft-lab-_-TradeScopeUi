@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { useBotStore } from './ftbotwrapper';
+import { useBotStore } from './tsbotwrapper';
 
 import {
   ExchangeSelection,

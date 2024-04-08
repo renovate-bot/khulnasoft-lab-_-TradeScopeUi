@@ -110,42 +110,45 @@
       <template v-if="botStore.activeBot.botApiVersion >= 2.22">
         <b-form-group
           label-cols-sm="5"
-          label="Enable FreqAI:"
+          label="Enable TradeAI:"
           label-align-sm="right"
-          label-for="enable-freqai"
+          label-for="enable-tradeai"
           class="align-items-center"
         >
           <template #label>
             <div class="d-flex justify-content-center">
-              <span class="me-2">Enable FreqAI:</span>
+              <span class="me-2">Enable TradeAI:</span>
               <InfoBox
-                hint="Assumes freqAI configuration is setup in the configuration, and the strategy is a freqAI strategy. Will fail if that's not the case."
+                hint="Assumes tradeAI configuration is setup in the configuration, and the strategy is a tradeAI strategy. Will fail if that's not the case."
               />
             </div>
           </template>
-          <b-form-checkbox id="enable-freqai" v-model="btStore.freqAI.enabled"></b-form-checkbox>
+          <b-form-checkbox id="enable-tradeai" v-model="btStore.tradeAI.enabled"></b-form-checkbox>
         </b-form-group>
         <b-form-group
-          v-if="btStore.freqAI.enabled"
+          v-if="btStore.tradeAI.enabled"
           label-cols-sm="5"
-          label="FreqAI identifier:"
+          label="TradeAI identifier:"
           label-align-sm="right"
-          label-for="freqai-identifier"
+          label-for="tradeai-identifier"
         >
           <b-form-input
-            id="freqai-identifier"
-            v-model="btStore.freqAI.identifier"
+            id="tradeai-identifier"
+            v-model="btStore.tradeAI.identifier"
             placeholder="Use config default"
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          v-if="btStore.freqAI.enabled"
+          v-if="btStore.tradeAI.enabled"
           label-cols-sm="5"
-          label="FreqAI Model"
+          label="TradeAI Model"
           label-align-sm="right"
-          label-for="freqai-model"
+          label-for="tradeai-model"
         >
-          <FreqaiModelSelect id="freqai-model" v-model="btStore.freqAI.model"></FreqaiModelSelect>
+          <TradeaiModelSelect
+            id="tradeai-model"
+            v-model="btStore.tradeAI.model"
+          ></TradeaiModelSelect>
         </b-form-group>
       </template>
 
@@ -203,7 +206,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { BacktestPayload } from '@/types';
 
 import { useBtStore } from '@/stores/btStore';
@@ -243,10 +246,10 @@ function clickBacktest() {
   if (!btStore.allowCache) {
     btPayload.backtest_cache = 'none';
   }
-  if (btStore.freqAI.enabled) {
-    btPayload.freqaimodel = btStore.freqAI.model;
-    if (btStore.freqAI.identifier !== '') {
-      btPayload.freqai = { identifier: btStore.freqAI.identifier };
+  if (btStore.tradeAI.enabled) {
+    btPayload.tradeaimodel = btStore.tradeAI.model;
+    if (btStore.tradeAI.identifier !== '') {
+      btPayload.tradeai = { identifier: btStore.tradeAI.identifier };
     }
   }
 

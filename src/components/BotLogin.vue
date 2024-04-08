@@ -42,7 +42,7 @@
           id="username-input"
           v-model="auth.username"
           required
-          placeholder="Freqtrader"
+          placeholder="Tradescoper"
           :state="nameState"
           @keydown.enter="handleOk"
         ></b-form-input>
@@ -68,8 +68,8 @@
           <br />
           <span v-if="errorMessageCORS">
             Please also check your bot's CORS configuration:
-            <a href="https://www.freqtrade.io/en/latest/rest-api/#cors"
-              >Freqtrade CORS documentation</a
+            <a href="https://www.tradescope.io/en/latest/rest-api/#cors"
+              >Tradescope CORS documentation</a
             ></span
           >
         </b-alert>
@@ -86,7 +86,7 @@
 import { useUserService } from '@/shared/userService';
 import { AuthPayload, AuthStorageWithBotId } from '@/types';
 
-import { useBotStore } from '@/stores/ftbotwrapper';
+import { useBotStore } from '@/stores/tsbotwrapper';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 
