@@ -6228,11 +6228,11 @@ __metadata:
     prettier: "npm:^3.2.5"
     sass: "npm:^1.72.0"
     sortablejs: "npm:^1.15.2"
-    typescript: "npm:~5.4.3"
+    typescript: "npm:^5.2.2"
     unplugin-auto-import: "npm:^0.17.5"
     unplugin-icons: "npm:^0.18.5"
     unplugin-vue-components: "npm:^0.26.0"
-    vite: "npm:^5.2.7"
+    vite: "npm:^5.2.0"
     vitest: "npm:^1.4.0"
     vue: "npm:^3.4.21"
     vue-class-component: "npm:^7.2.5"
@@ -6240,7 +6240,7 @@ __metadata:
     vue-echarts: "npm:^6.6.9"
     vue-router: "npm:^4.3.0"
     vue-select: "npm:^4.0.0-beta.6"
-    vue-tsc: "npm:^2.0.7"
+    vue-tsc: "npm:^2.0.6"
   languageName: unknown
   linkType: soft
 
@@ -6313,7 +6313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.4.3":
+"typescript@npm:^5.2.2":
   version: 5.4.4
   resolution: "typescript@npm:5.4.4"
   bin:
@@ -6323,7 +6323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A~5.4.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
   version: 5.4.4
   resolution: "typescript@patch:typescript@npm%3A5.4.4#optional!builtin<compat/typescript>::version=5.4.4&hash=5adc0c"
   bin:
@@ -6634,7 +6634,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.2.7":
+"vite@npm:^5.2.0":
   version: 5.2.8
   resolution: "vite@npm:5.2.8"
   dependencies:
@@ -6872,7 +6872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^2.0.7":
+"vue-tsc@npm:^2.0.6":
   version: 2.0.11
   resolution: "vue-tsc@npm:2.0.11"
   dependencies:
