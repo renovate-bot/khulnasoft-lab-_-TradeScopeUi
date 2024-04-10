@@ -1,5 +1,5 @@
 import { parse, toDate } from 'date-fns';
-import { toZonedTime, fromZonedTime } from 'date-fns-tz';
+import { format, toZonedTime, fromZonedTime } from 'date-fns-tz';
 import humanizeDuration from 'humanize-duration';
 import { isNotUndefined } from './numberformat';
 

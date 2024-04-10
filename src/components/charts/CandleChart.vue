@@ -44,7 +44,7 @@ import {
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { timestampms } from '@/shared/formatters';
-  
+
 use([
   AxisPointerComponent,
   CalendarComponent,
@@ -644,10 +644,10 @@ function initializeChartOptions() {
 
 function updateSliderPosition() {
   if (!props.sliderPosition) return;
-   
+
   const start = timestampms(props.sliderPosition.startValue - props.dataset.timeframe_ms * 40);
   const end = timestampms(
-      props.sliderPosition.endValue
+    props.sliderPosition.endValue
       ? props.sliderPosition.endValue + props.dataset.timeframe_ms * 40
       : props.sliderPosition.startValue + props.dataset.timeframe_ms * 80,
   );
