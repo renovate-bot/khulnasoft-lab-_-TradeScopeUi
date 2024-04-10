@@ -1,22 +1,36 @@
 FROM node:21.7.2-alpine as ui-builder
 
-RUN mkdir /app
+# Install necessary dependencies
+RUN apk add --update --no-cache git g++ make
 
+# Create the app directory
+RUN mkdir /app
 WORKDIR /app
 
+# Copy package.json and yarn.lock for dependency installation
 COPY package.json yarn.lock .yarnrc.yml /app/
 COPY .yarn/releases/ /app/.yarn/releases/
 
-RUN apk add --update --no-cache g++ make\
-    && yarn install\
-    && apk del g++ make
+# Install dependencies
+RUN yarn install
 
+# Copy the rest of the application code
 COPY . /app
 
+# Build the UI
 RUN yarn build
 
+# Final stage: Serve the built UI using Nginx
 FROM nginx:1.25.4-alpine
-COPY  --from=ui-builder /app/dist /etc/nginx/html
-COPY  --from=ui-builder /app/nginx.conf /etc/nginx/nginx.conf
+
+# Copy the built UI from the ui-builder stage
+COPY --from=ui-builder /app/dist /usr/share/nginx/html
+
+# Copy nginx configuration
+COPY --from=ui-builder /app/nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80
 EXPOSE 80
+
+# Command to run nginx
 CMD ["nginx"]
