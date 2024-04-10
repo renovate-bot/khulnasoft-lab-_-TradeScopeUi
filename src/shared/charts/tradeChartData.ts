@@ -4,7 +4,7 @@ import { Order, PairHistory, Trade, BTOrder } from '@/types';
 import { ScatterSeriesOption } from 'echarts';
 
 function buildTooltipCost(order: Order | BTOrder, quoteCurrency: string): string {
-  return `${order.ft_order_side === 'buy' ? '+' : '-'}${formatPriceCurrency(
+  return `${order.ts_order_side === 'buy' ? '+' : '-'}${formatPriceCurrency(
     'cost' in order ? order.cost : order.amount * order.safe_price,
     quoteCurrency,
   )}`;
@@ -22,7 +22,7 @@ function buildToolTip(
   }
   ${buildTooltipCost(order, quoteCurrency)}
   Enter-tag: ${trade.enter_tag ?? ''}`;
-  tooltip += `${'ft_order_tag' in order && order.ft_order_tag && trade.enter_tag != order.ft_order_tag ? '\nOrder-Tag: ' + order.ft_order_tag : ''}`;
+  tooltip += `${'ts_order_tag' in order && order.ts_order_tag && trade.enter_tag != order.ts_order_tag ? '\nOrder-Tag: ' + order.ts_order_tag : ''}`;
   tooltip += `${trade.exit_reason ? '\nExit-Tag: ' + trade.exit_reason : ''}`;
   return tooltip;
 }
@@ -35,7 +35,7 @@ function buildAdjustmentToolTip(
   let tooltip = `${trade.is_short ? 'Short' : 'Long'} adjustment
   ${buildTooltipCost(order, quoteCurrency)}
   Enter-tag: ${trade.enter_tag ?? ''}`;
-  tooltip += `${'ft_order_tag' in order && order.ft_order_tag ? '\nOrder-Tag: ' + order.ft_order_tag : ''}`;
+  tooltip += `${'ts_order_tag' in order && order.ts_order_tag ? '\nOrder-Tag: ' + order.ts_order_tag : ''}`;
 
   return tooltip;
 }
@@ -89,7 +89,7 @@ export function getTradeEntries(dataset: PairHistory, trades: Trade[]) {
                 roundTimeframe(dataset.timeframe_ms ?? 0, openTs),
                 order.safe_price,
                 OPEN_CLOSE_SYMBOL,
-                order.ft_order_side == 'sell' ? 180 : 0,
+                order.ts_order_side == 'sell' ? 180 : 0,
                 trade.is_short ? SHORT_COLOR : LONG_COLOR,
                 (trade.is_short ? 'Short' : 'Long') +
                   (!order.order_filled_timestamp ? ' (open)' : ''),
@@ -121,7 +121,7 @@ export function getTradeEntries(dataset: PairHistory, trades: Trade[]) {
                 roundTimeframe(dataset.timeframe_ms ?? 0, orderTs),
                 order.safe_price,
                 ADJUSTMENT_SYMBOL,
-                order.ft_order_side == 'sell' ? 180 : 0,
+                order.ts_order_side == 'sell' ? 180 : 0,
                 trade.is_short ? SHORT_COLOR : LONG_COLOR,
                 '',
                 buildAdjustmentToolTip(trade, order, quoteCurrency),

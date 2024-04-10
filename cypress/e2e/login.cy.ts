@@ -62,7 +62,7 @@ describe('Login', () => {
     cy.get('button[type=submit]')
       .click()
       .should(() => {
-        const loginInfo = JSON.parse(localStorage.getItem('ftAuthLoginInfo') || '{}');
+        const loginInfo = JSON.parse(localStorage.getItem('tsAuthLoginInfo') || '{}');
         const bot1 = 'tsbot.0';
 
         expect(loginInfo[bot1].botName).to.eq('TestBot');

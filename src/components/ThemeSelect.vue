@@ -22,9 +22,9 @@ const setTheme = (themeName: string) => {
     // const styles = document.getElementsByTagName('style');
     if (activeTheme.value) {
       // Only transition if simple mode is active
-      document.body.classList.add('ft-theme-transition');
+      document.body.classList.add('ts-theme-transition');
       window.setTimeout(() => {
-        document.body.classList.remove('ft-theme-transition');
+        document.body.classList.remove('ts-theme-transition');
       }, 1000);
     }
     mode.value = themeName.toLowerCase() === 'bootstrap' ? 'light' : 'dark';

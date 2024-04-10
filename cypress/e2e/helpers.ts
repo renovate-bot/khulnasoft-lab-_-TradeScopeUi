@@ -1,6 +1,6 @@
 export function setLoginInfo() {
   localStorage.setItem(
-    'ftAuthLoginInfo',
+    'tsAuthLoginInfo',
     JSON.stringify({
       'tsbot.0': {
         botName: 'TestBot',
@@ -11,7 +11,7 @@ export function setLoginInfo() {
       },
     }),
   );
-  localStorage.setItem('ftSelectedBot', 'tsbot.0');
+  localStorage.setItem('tsSelectedBot', 'tsbot.0');
 }
 
 export function defaultMocks() {

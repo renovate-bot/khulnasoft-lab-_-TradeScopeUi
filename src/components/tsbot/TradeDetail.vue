@@ -103,7 +103,7 @@
           <summary>Orders {{ trade.orders.length > 1 ? `[${trade.orders.length}]` : '' }}</summary>
           <div v-for="(order, key) in trade.orders" :key="key">
             <span
-              :title="`${order.ft_order_side} ${order.order_type} order for ${formatPriceCurrency(
+              :title="`${order.ts_order_side} ${order.order_type} order for ${formatPriceCurrency(
                 order.amount,
                 trade.base_currency ?? '',
               )} at ${formatPriceCurrency(
@@ -113,7 +113,7 @@
             >
               (#{{ key + 1 }})
               <i-mdi-triangle
-                v-if="order.ft_order_side === 'buy'"
+                v-if="order.ts_order_side === 'buy'"
                 class="me-1 color-up"
                 style="font-size: 0.6rem"
               />
@@ -123,15 +123,15 @@
                 :date="order.order_timestamp"
                 show-timezone
               />
-              <b class="ms-1" :class="order.ft_order_side === 'buy' ? 'color-up' : 'color-down'">{{
-                order.ft_order_side
+              <b class="ms-1" :class="order.ts_order_side === 'buy' ? 'color-up' : 'color-down'">{{
+                order.ts_order_side
               }}</b>
               for <b>{{ formatPrice(order.safe_price) }}</b> |
               <span v-if="order.remaining && order.remaining !== 0" title="remaining"
                 >{{ formatPrice(order.remaining, 8) }} /
               </span>
               <span title="Filled">{{ formatPrice(order.filled ?? 0, 8) }}</span>
-              <template v-if="order.ft_order_tag"> | {{ order.ft_order_tag ?? '' }}</template>
+              <template v-if="order.ts_order_tag"> | {{ order.ts_order_tag ?? '' }}</template>
             </span>
           </div>
         </details>

@@ -9,7 +9,7 @@ import {
   BotDescriptor,
 } from '@/types';
 
-const AUTH_LOGIN_INFO = 'ftAuthLoginInfo';
+const AUTH_LOGIN_INFO = 'tsAuthLoginInfo';
 const APIBASE = '/api/v1';
 
 export class UserService {
@@ -235,7 +235,7 @@ export class UserService {
     const AUTH_REFRESH_TOKEN = 'auth_ref_token'; // Legacy key - do not use
     const AUTH_ACCESS_TOKEN = 'auth_access_token';
     const AUTH_API_URL = 'auth_api_url';
-    const AUTO_REFRESH = 'ft_auto_refresh';
+    const AUTO_REFRESH = 'ts_auto_refresh';
 
     const apiUrl = JSON.parse(localStorage.getItem(AUTH_API_URL) || '{}');
     const refreshToken = JSON.parse(localStorage.getItem(AUTH_REFRESH_TOKEN) || '{}');

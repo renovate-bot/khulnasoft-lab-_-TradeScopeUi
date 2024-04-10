@@ -47,7 +47,7 @@
               v-for="order in trade.orders?.filter((o) => o.order_filled_timestamp !== null)"
               :key="order.order_timestamp"
             >
-              {{ order.ft_order_side }} {{ order.amount }} at {{ order.safe_price }}
+              {{ order.ts_order_side }} {{ order.amount }} at {{ order.safe_price }}
             </li>
           </ul>
         </b-collapse>

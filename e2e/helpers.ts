@@ -4,7 +4,7 @@ export async function setLoginInfo(page) {
   await page.goto('/');
   await page.evaluate(() => {
     localStorage.setItem(
-      'ftAuthLoginInfo',
+      'tsAuthLoginInfo',
       JSON.stringify({
         'tsbot.0': {
           botName: 'TestBot',
@@ -15,7 +15,7 @@ export async function setLoginInfo(page) {
         },
       }),
     );
-    localStorage.setItem('ftSelectedBot', 'tsbot.0');
+    localStorage.setItem('tsSelectedBot', 'tsbot.0');
   });
 }
 

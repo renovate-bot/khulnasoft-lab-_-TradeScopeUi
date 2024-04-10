@@ -310,10 +310,10 @@
     background-color: unset !important;
 }
 
-body.ft-theme-transition,
-body.ft-theme-transition *,
-body.ft-theme-transition *:before,
-body.ft-theme-transition *:after {
+body.ts-theme-transition,
+body.ts-theme-transition *,
+body.ts-theme-transition *:before,
+body.ts-theme-transition *:after {
     transition:
         background 750ms ease-in-out,
         border-color 750ms ease-in-out,

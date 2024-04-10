@@ -18,7 +18,7 @@ import {
 } from '@/types';
 import { defineStore } from 'pinia';
 import { createBotSubStore } from './tsbot';
-const AUTH_SELECTED_BOT = 'ftSelectedBot';
+const AUTH_SELECTED_BOT = 'tsSelectedBot';
 
 export type BotSubStore = ReturnType<typeof createBotSubStore>;
 

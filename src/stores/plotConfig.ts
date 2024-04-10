@@ -2,12 +2,12 @@ import { deepClone } from '@/shared/deepClone';
 import { EMPTY_PLOTCONFIG, PlotConfig, PlotConfigStorage } from '@/types';
 import { defineStore } from 'pinia';
 
-const FT_PLOT_CONFIG_KEY = 'ftPlotConfig';
+const TS_PLOT_CONFIG_KEY = 'tsPlotConfig';
 
 function migratePlotConfigs() {
   // Legacy config names
-  const PLOT_CONFIG = 'ft_custom_plot_config';
-  const PLOT_CONFIG_NAME = 'ft_selected_plot_config';
+  const PLOT_CONFIG = 'ts_custom_plot_config';
+  const PLOT_CONFIG_NAME = 'ts_selected_plot_config';
 
   const allConfigs = JSON.parse(localStorage.getItem(PLOT_CONFIG) || '{}');
   if (Object.keys(allConfigs).length > 0) {
@@ -16,7 +16,7 @@ function migratePlotConfigs() {
       customPlotConfigs: allConfigs,
       plotConfigName: localStorage.getItem(PLOT_CONFIG_NAME) || 'default',
     };
-    localStorage.setItem(FT_PLOT_CONFIG_KEY, JSON.stringify(res));
+    localStorage.setItem(TS_PLOT_CONFIG_KEY, JSON.stringify(res));
     localStorage.removeItem(PLOT_CONFIG);
     localStorage.removeItem(PLOT_CONFIG_NAME);
   }
@@ -79,7 +79,7 @@ export const usePlotConfigStore = defineStore('plotConfig', {
     },
   },
   persist: {
-    key: FT_PLOT_CONFIG_KEY,
+    key: TS_PLOT_CONFIG_KEY,
     paths: ['plotConfigName', 'customPlotConfigs'],
     afterRestore: (context) => {
       if (Object.keys(context.store.customPlotConfigs).length === 0) {

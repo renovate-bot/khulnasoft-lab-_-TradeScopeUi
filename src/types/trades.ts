@@ -3,9 +3,9 @@ import { TradingMode } from './types';
 export interface BTOrder {
   amount: number;
   safe_price: number;
-  ft_order_side: string;
+  ts_order_side: string;
   order_filled_timestamp?: number;
-  ft_is_entry: boolean;
+  ts_is_entry: boolean;
 }
 
 export interface Order extends BTOrder {
@@ -18,9 +18,9 @@ export interface Order extends BTOrder {
   order_type: string;
   is_open: boolean;
   order_timestamp?: number;
-  ft_fee_base?: number;
+  ts_fee_base?: number;
   /** Tag assigned to this order */
-  ft_order_tag?: string;
+  ts_order_tag?: string;
 }
 
 interface TradeBase {
