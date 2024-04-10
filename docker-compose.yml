@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: "./Dockerfile"
-    image: tradeui
-    # image: khulnasoft/tradeui:main
+    # image: tradeui
+    image: khulnasoft/tradeui:main
     restart: unless-stopped
     ports:
       - "3000:80"
