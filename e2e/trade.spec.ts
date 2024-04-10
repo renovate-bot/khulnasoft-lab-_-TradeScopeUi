@@ -1,30 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import { setLoginInfo, defaultMocks } from './helpers';
-
-function tradeMocks(page) {
-  const mapping = [
-    { name: '@Status', url: '**/api/v1/status', fixture: 'status_empty.json' },
-    { name: '@Profit', url: '**/api/v1/profit', fixture: 'profit.json' },
-    { name: '@Trades', url: '**/api/v1/trades*', fixture: 'trades.json' },
-    { name: '@Balance', url: '**/api/v1/balance', fixture: 'balance.json' },
-    { name: '@Whitelist', url: '**/api/v1/whitelist', fixture: 'whitelist.json' },
-    { name: '@Blacklist', url: '**/api/v1/blacklist', fixture: 'blacklist.json' },
-    { name: '@Locks', url: '**/api/v1/locks', fixture: 'locks_empty.json' },
-    { name: '@Performance', url: '**/api/v1/performance', fixture: 'performance.json' },
-    {
-      name: '@ReloadConfig',
-      method: 'POST',
-      url: '**/api/v1/reload_config',
-      fixture: 'reload_config.json',
-    },
-  ];
-  mapping.forEach((item) => {
-    page.route(item.url, (route) => {
-      return route.fulfill({ path: `./cypress/fixtures/${item.fixture}` });
-    });
-  });
-}
+import { setLoginInfo, defaultMocks, tradeMocks } from './helpers';
 
 test.describe('Trade', () => {
   test.beforeEach(async ({ page }) => {
@@ -130,6 +106,8 @@ test.describe('Trade', () => {
     await page.locator('#avatar-drop').click();
     const multiPane = page.locator('.drag-header', { hasText: 'Multi Pane' });
 
+    const multiPanebb = await multiPane.boundingBox();
+
     await page.getByLabel('Lock layout').uncheck();
 
     const chartHeader = await page.locator('.drag-header:has-text("Chart")');
@@ -145,7 +123,12 @@ test.describe('Trade', () => {
       await page.mouse.move(chartHeaderbb?.x + chartHeaderbb.width / 2, chartHeaderbb?.y + 200);
       await page.mouse.up();
       await expect(multiPane).toBeInViewport();
+      // Multipane wasn't moved.
+      await expect(multiPanebb).toEqual(await multiPane.boundingBox());
+
       await expect(chartHeader).toBeInViewport();
+      // ChartHeader was moved down
+      await expect(chartHeaderbb).not.toEqual(await chartHeader.boundingBox());
     }
   });
 });
