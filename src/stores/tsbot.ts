@@ -57,7 +57,7 @@ import axios, { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 import { useAlertForBot } from '../shared/alerts';
 import { useWebSocket } from '@vueuse/core';
-import { FTWsMessage, FtWsMessageTypes } from '@/types/wsMessageTypes';
+import { TSWsMessage, TsWsMessageTypes } from '@/types/wsMessageTypes';
 import { showNotification } from '@/shared/notifications';
 
 export function createBotSubStore(botId: string, botName: string) {
@@ -1038,21 +1038,21 @@ export function createBotSubStore(botId: string, botName: string) {
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       _handleWebsocketMessage(ws, event: MessageEvent<any>) {
-        const msg: FTWsMessage = JSON.parse(event.data);
+        const msg: TSWsMessage = JSON.parse(event.data);
         switch (msg.type) {
-          case FtWsMessageTypes.exception:
+          case TsWsMessageTypes.exception:
             showAlert(`WSException: ${msg.data}`, 'danger');
             break;
-          case FtWsMessageTypes.whitelist:
+          case TsWsMessageTypes.whitelist:
             this.whitelist = msg.data;
             break;
-          case FtWsMessageTypes.entryFill:
-          case FtWsMessageTypes.exitFill:
-          case FtWsMessageTypes.exitCancel:
-          case FtWsMessageTypes.entryCancel:
+          case TsWsMessageTypes.entryFill:
+          case TsWsMessageTypes.exitFill:
+          case TsWsMessageTypes.exitCancel:
+          case TsWsMessageTypes.entryCancel:
             showNotification(msg, botName);
             break;
-          case FtWsMessageTypes.newCandle: {
+          case TsWsMessageTypes.newCandle: {
             const [pair, timeframe] = msg.data;
             // TODO: check for active bot ...
             if (pair === this.selectedPair) {
@@ -1101,15 +1101,15 @@ export function createBotSubStore(botId: string, botName: string) {
                 //
                 this.websocketStarted = true;
                 const subscriptions = [
-                  FtWsMessageTypes.whitelist,
-                  FtWsMessageTypes.entryFill,
-                  FtWsMessageTypes.exitFill,
-                  FtWsMessageTypes.entryCancel,
-                  FtWsMessageTypes.exitCancel,
+                  TsWsMessageTypes.whitelist,
+                  TsWsMessageTypes.entryFill,
+                  TsWsMessageTypes.exitFill,
+                  TsWsMessageTypes.entryCancel,
+                  TsWsMessageTypes.exitCancel,
                   /*'new_candle' /*'analyzed_df'*/
                 ];
                 if (this.botApiVersion >= 2.21) {
-                  subscriptions.push(FtWsMessageTypes.newCandle);
+                  subscriptions.push(TsWsMessageTypes.newCandle);
                 }
 
                 send(
@@ -1120,7 +1120,7 @@ export function createBotSubStore(botId: string, botName: string) {
                 );
                 send(
                   JSON.stringify({
-                    type: FtWsMessageTypes.whitelist,
+                    type: TsWsMessageTypes.whitelist,
                     data: '',
                   }),
                 );

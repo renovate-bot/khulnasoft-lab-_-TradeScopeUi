@@ -88,16 +88,16 @@
         <div class="d-flex flex-column border rounded p-2 mb-2 gap-2">
           <b-form-group description="Notifications">
             <h4>Notification Settings</h4>
-            <b-form-checkbox v-model="settingsStore.notifications[FtWsMessageTypes.entryFill]"
+            <b-form-checkbox v-model="settingsStore.notifications[TsWsMessageTypes.entryFill]"
               >Entry notifications</b-form-checkbox
             >
-            <b-form-checkbox v-model="settingsStore.notifications[FtWsMessageTypes.exitFill]"
+            <b-form-checkbox v-model="settingsStore.notifications[TsWsMessageTypes.exitFill]"
               >Exit notifications</b-form-checkbox
             >
-            <b-form-checkbox v-model="settingsStore.notifications[FtWsMessageTypes.entryCancel]"
+            <b-form-checkbox v-model="settingsStore.notifications[TsWsMessageTypes.entryCancel]"
               >Entry Cancel notifications</b-form-checkbox
             >
-            <b-form-checkbox v-model="settingsStore.notifications[FtWsMessageTypes.exitCancel]"
+            <b-form-checkbox v-model="settingsStore.notifications[TsWsMessageTypes.exitCancel]"
               >Exit Cancel notifications</b-form-checkbox
             >
           </b-form-group>
@@ -111,7 +111,7 @@
 import { OpenTradeVizOptions, useSettingsStore } from '@/stores/settings';
 import { useLayoutStore } from '@/stores/layout';
 import { showAlert } from '@/shared/alerts';
-import { FtWsMessageTypes } from '@/types/wsMessageTypes';
+import { TsWsMessageTypes } from '@/types/wsMessageTypes';
 import { ColorPreferences, useColorStore } from '@/stores/colors';
 
 const settingsStore = useSettingsStore();

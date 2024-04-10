@@ -21,7 +21,7 @@ describe('Settings', () => {
     cy.get('select:first')
       .select('asTitle')
       .should(() => {
-        const settings = JSON.parse(localStorage.getItem('ftUISettings') || '{}');
+        const settings = JSON.parse(localStorage.getItem('tsUISettings') || '{}');
         expect(settings['openTradesInTitle']).to.eq('asTitle');
       });
   });

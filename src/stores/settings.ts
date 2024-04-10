@@ -3,9 +3,9 @@ import { defineStore } from 'pinia';
 import { getCurrentTheme, getTheme } from '@/shared/themes';
 import axios from 'axios';
 import { UiVersion } from '@/types';
-import { FtWsMessageTypes } from '@/types/wsMessageTypes';
+import { TsWsMessageTypes } from '@/types/wsMessageTypes';
 
-const STORE_UI_SETTINGS = 'ftUISettings';
+const STORE_UI_SETTINGS = 'tsUISettings';
 
 export enum OpenTradeVizOptions {
   showPill = 'showPill',
@@ -14,10 +14,10 @@ export enum OpenTradeVizOptions {
 }
 
 const notificationDefaults = {
-  [FtWsMessageTypes.entryFill]: true,
-  [FtWsMessageTypes.exitFill]: true,
-  [FtWsMessageTypes.entryCancel]: true,
-  [FtWsMessageTypes.exitCancel]: true,
+  [TsWsMessageTypes.entryFill]: true,
+  [TsWsMessageTypes.exitFill]: true,
+  [TsWsMessageTypes.entryCancel]: true,
+  [TsWsMessageTypes.exitCancel]: true,
 };
 
 export const useSettingsStore = defineStore('uiSettings', {

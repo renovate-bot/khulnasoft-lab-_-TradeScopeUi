@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-const STORE_UI_COLORS = 'ftUIColorSettings';
+const STORE_UI_COLORS = 'tsUIColorSettings';
 
 export enum ColorPreferences {
   GREEN_UP = 'greenUp',

@@ -26,7 +26,7 @@ test.describe('Settings', () => {
     await page.locator('select').first().selectOption('asTitle');
 
     const settings = await page.evaluate(() =>
-      JSON.parse(window.localStorage.getItem('ftUISettings') || '{}'),
+      JSON.parse(window.localStorage.getItem('tsUISettings') || '{}'),
     );
     await expect(settings['openTradesInTitle']).toBe('asTitle');
   });
