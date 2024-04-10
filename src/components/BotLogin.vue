@@ -68,7 +68,7 @@
           <br />
           <span v-if="errorMessageCORS">
             Please also check your bot's CORS configuration:
-            <a href="https://www.tradescope.khulnasoft.com/en/latest/rest-api/#cors"
+            <a href="https://www.tradescope.io/en/latest/rest-api/#cors"
               >Tradescope CORS documentation</a
             ></span
           >

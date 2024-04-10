@@ -13,13 +13,13 @@ This project is still in its early stages (consider it alpha), and is not yet st
 
 Using TradeUI, does require [tradescope](https://github.com/khulnasoft/tradescope) to be setup and running.
 In newer versions (2021.2 and newer), tradeUI is builtin to tradescope, so manual setup of tradeUI will no longer be necessary unless you want to modify tradeUI.
-Instructions for this end-user setup can be found in the [tradescope API documentation](https://www.tradescope.khulnasoft.com/en/stable/rest-api/).
+Instructions for this end-user setup can be found in the [tradescope API documentation](https://www.tradescope.io/en/stable/rest-api/).
 
 ## Developer project setup
 
 It will require [tradescope](https://github.com/khulnasoft/tradescope) to be running on the same host with the API enabled under (`localhost:8080`). You can either use the webpack proxy (port can be changed in `vue.config.js`) - or connect directly to the API (recommended).
 
-You will also have to have CORS for tradescope configured correctly based on the [tradescope documentation](https://www.tradescope.khulnasoft.com/en/latest/rest-api/#cors).
+You will also have to have CORS for tradescope configured correctly based on the [tradescope documentation](https://www.tradescope.io/en/latest/rest-api/#cors).
 Most likely, the correct entry will be `http://localhost:3000` or `http://127.0.0.1:3000` - but the URL must match the URL you use to access TradeUI.
 Ports can vary, so check the URL you're using.
 

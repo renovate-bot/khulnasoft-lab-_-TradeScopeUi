@@ -13,7 +13,7 @@
     <br />
     <p>
       If you need any help, please refer to the
-      <a href="https://www.tradescope.khulnasoft.com/en/latest/">Tradescope Documentation</a>.
+      <a href="https://www.tradescope.io/en/latest/">Tradescope Documentation</a>.
     </p>
 
     <p>Have fun - <i>wishes you the Tradescope team</i></p>
