@@ -1,4 +1,4 @@
-FROM node:21.7.2-alpine as ui-builder
+FROM node:22.4.0-alpine as ui-builder
 
 # Install necessary dependencies
 RUN apk add --update --no-cache git g++ make
