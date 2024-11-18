@@ -14,7 +14,6 @@
     "allowJs": true,
     "baseUrl": "src",
     "types": [
-      "cypress",
       "vite/client",
       "unplugin-icons/types/vue",
     ],
@@ -28,8 +27,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "cypress/support/*.ts",
-    "components.d.ts",
+    "src/components.d.ts",
+    "src/autoimport.d.ts",
   ],
   "exclude": [
       "node_modules",

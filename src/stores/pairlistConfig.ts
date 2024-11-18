@@ -1,5 +1,4 @@
-import { defineStore } from 'pinia';
-import { useBotStore } from './tsbotwrapper';
+import { useBotStore } from './ftbotwrapper';
 
 import {
   ExchangeSelection,
@@ -12,9 +11,6 @@ import {
   PairlistsPayload,
   TradingMode,
 } from '@/types';
-
-import { showAlert } from '../shared/alerts';
-import { isNotUndefined } from '@/shared/formatters';
 
 export const usePairlistConfigStore = defineStore(
   'pairlistConfig',
@@ -151,7 +147,7 @@ export const usePairlistConfigStore = defineStore(
         const { job_id: jobId } = await botStore.activeBot.evaluatePairlist(payload);
         console.log('jobId', jobId);
 
-        intervalId.value = setInterval(async () => {
+        intervalId.value = window.setInterval(async () => {
           const res = await botStore.activeBot.getBackgroundJobStatus(jobId);
           if (!res.running) {
             clearInterval(intervalId.value);
@@ -176,6 +172,8 @@ export const usePairlistConfigStore = defineStore(
         return Number(value);
       } else if (type === PairlistParamType.boolean) {
         return Boolean(value);
+      } else if (type === PairlistParamType.list) {
+        return value as string[];
       } else {
         return String(value);
       }
@@ -253,8 +251,12 @@ export const usePairlistConfigStore = defineStore(
   },
   {
     persist: {
-      key: 'tsPairlistConfig',
-      paths: ['savedConfigs', 'configName'],
+      key: 'ftPairlistConfig',
+      pick: ['savedConfigs', 'configName'],
     },
   },
 );
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(usePairlistConfigStore, import.meta.hot));
+}

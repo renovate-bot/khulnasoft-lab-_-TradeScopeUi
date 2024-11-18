@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-**TradeUI Version**
+**ChainUI Version**
 
-- Version of tradeUI: _____ (Available in the top right corner of the UI)
-- version of tradescope: _____ (`tradescope -V` or `docker compose run --rm tradescope -V` for Tradescope running in docker)
+- Version of chainUI: _____ (Available in the top right corner of the UI)
+- version of chaindrift: _____ (`chaindrift -V` or `docker compose run --rm chaindrift -V` for Chaindrift running in docker)
 
 **Describe the bug**
 A clear and concise description of what the bug is.

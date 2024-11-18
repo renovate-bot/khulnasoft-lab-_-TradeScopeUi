@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { useBotStore } from '@/stores/ftbotwrapper';
+
+defineProps({
+  history: { default: false, type: Boolean },
+});
+const botStore = useBotStore();
+</script>
+
 <template>
   <div>
     <!-- <TradeList
@@ -26,11 +35,11 @@
       v-if="botStore.activeBot.detailTradeId && botStore.activeBot.tradeDetail"
       class="d-flex flex-column"
     >
-      <b-button
+      <BButton
         size="sm"
         class="align-self-start my-1 ms-1"
         @click="botStore.activeBot.setDetailTrade(null)"
-        ><i-mdi-arrow-left /> Back</b-button
+        ><i-mdi-arrow-left /> Back</BButton
       >
       <TradeDetail
         :trade="botStore.activeBot.tradeDetail"
@@ -39,14 +48,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useBotStore } from '@/stores/tsbotwrapper';
-
-defineProps({
-  history: { default: false, type: Boolean },
-});
-const botStore = useBotStore();
-</script>
-
-<style scoped></style>

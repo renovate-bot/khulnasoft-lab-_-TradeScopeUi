@@ -1,6 +1,6 @@
 /* cSpell:disable */
 {
-  "name": "tradeui",
+  "name": "chainui",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -8,7 +8,7 @@
     3000
   ],
   "mounts": [
-    "source=tradeui-bashhistory,target=/home/node/commandhistory,type=volume"
+    "source=chainui-bashhistory,target=/home/node/commandhistory,type=volume"
   ],
   "remoteUser": "node",
   "customizations": {
@@ -27,15 +27,16 @@
       "extensions": [
         "vue.volar",
         "dbaeumer.vscode-eslint",
+        "antfu.iconify",
+        "ms-playwright.playwright",
+        "vitest.explorer",
         "yzhang.markdown-all-in-one",
         "marquesmps.dockerfile-validator",
         "streetsidesoftware.code-spell-checker",
         "vscode-icons-team.vscode-icons",
-        "hediet.vscode-drawio",
-        "ZixuanChen.vitest-explorer",
-        "antfu.iconify"
+        "hediet.vscode-drawio"
       ]
     }
   },
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "pnpm install"
 }

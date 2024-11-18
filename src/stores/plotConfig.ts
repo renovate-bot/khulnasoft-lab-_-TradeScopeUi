@@ -1,13 +1,11 @@
-import { deepClone } from '@/shared/deepClone';
 import { EMPTY_PLOTCONFIG, PlotConfig, PlotConfigStorage } from '@/types';
-import { defineStore } from 'pinia';
 
-const TS_PLOT_CONFIG_KEY = 'tsPlotConfig';
+const FT_PLOT_CONFIG_KEY = 'ftPlotConfig';
 
 function migratePlotConfigs() {
   // Legacy config names
-  const PLOT_CONFIG = 'ts_custom_plot_config';
-  const PLOT_CONFIG_NAME = 'ts_selected_plot_config';
+  const PLOT_CONFIG = 'ft_custom_plot_config';
+  const PLOT_CONFIG_NAME = 'ft_selected_plot_config';
 
   const allConfigs = JSON.parse(localStorage.getItem(PLOT_CONFIG) || '{}');
   if (Object.keys(allConfigs).length > 0) {
@@ -16,7 +14,7 @@ function migratePlotConfigs() {
       customPlotConfigs: allConfigs,
       plotConfigName: localStorage.getItem(PLOT_CONFIG_NAME) || 'default',
     };
-    localStorage.setItem(TS_PLOT_CONFIG_KEY, JSON.stringify(res));
+    localStorage.setItem(FT_PLOT_CONFIG_KEY, JSON.stringify(res));
     localStorage.removeItem(PLOT_CONFIG);
     localStorage.removeItem(PLOT_CONFIG_NAME);
   }
@@ -38,7 +36,9 @@ export const usePlotConfigStore = defineStore('plotConfig', {
       (state.isEditing
         ? state.editablePlotConfig
         : state.customPlotConfigs[state.plotConfigName]) || deepClone(EMPTY_PLOTCONFIG),
-    // plotConfig: (state) => state.customPlotConfig[state.plotConfigName] || { ...EMPTY_PLOTCONFIG },
+    usedColumns() {
+      return plotConfigColumns(this.plotConfig as unknown as PlotConfig);
+    },
   },
   actions: {
     saveCustomPlotConfig(name: string, plotConfig: PlotConfig) {
@@ -79,9 +79,9 @@ export const usePlotConfigStore = defineStore('plotConfig', {
     },
   },
   persist: {
-    key: TS_PLOT_CONFIG_KEY,
-    paths: ['plotConfigName', 'customPlotConfigs'],
-    afterRestore: (context) => {
+    key: FT_PLOT_CONFIG_KEY,
+    pick: ['plotConfigName', 'customPlotConfigs'],
+    afterHydrate: (context) => {
       if (Object.keys(context.store.customPlotConfigs).length === 0) {
         console.log('Initialized plotconfig');
         context.store.customPlotConfigs = { default: deepClone(EMPTY_PLOTCONFIG) };
@@ -89,3 +89,7 @@ export const usePlotConfigStore = defineStore('plotConfig', {
     },
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(usePlotConfigStore, import.meta.hot));
+}

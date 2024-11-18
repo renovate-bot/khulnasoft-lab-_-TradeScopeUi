@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { setLoginInfo, defaultMocks, tradeMocks } from './helpers';
+import { defaultMocks } from './helpers';
 
 test.describe('Login', () => {
   test('Is not logged in', async ({ page }) => {
@@ -24,7 +24,7 @@ test.describe('Login', () => {
     await page.goto('/login');
     await expect(page.locator('button', { hasText: 'Login' })).not.toBeInViewport();
     await page.locator('li', { hasText: 'No bot selected' });
-    await page.locator('.card-header:has-text("Tradescope bot Login")');
+    await page.locator('.card-header:has-text("Chaindrift bot Login")');
     // Test prefilled URL
     await expect(page.locator('input[id=url-input]').inputValue()).resolves.toBe(
       'http://localhost:3000',
@@ -44,9 +44,9 @@ test.describe('Login', () => {
   test('Test Login', async ({ page }) => {
     await defaultMocks(page);
     await page.goto('/login');
-    await page.locator('.card-header:has-text("Tradescope bot Login")');
+    await page.locator('.card-header:has-text("Chaindrift bot Login")');
     await page.locator('input[id=name-input]').fill('TestBot');
-    await page.locator('input[id=username-input]').fill('Tradescoper');
+    await page.locator('input[id=username-input]').fill('Chaindriftr');
     await page.locator('input[id=password-input]').fill('SuperDuperBot');
 
     await page.route('**/api/v1/token/login', (route) => {
@@ -66,7 +66,7 @@ test.describe('Login', () => {
     await expect(page.locator('button', { hasText: 'Login' })).not.toBeVisible();
     // Test logout
     await page.locator('#avatar-drop').click();
-    await page.locator('a:visible', { hasText: 'Sign Out' }).click();
+    await page.locator('button', { hasText: 'Sign Out' }).click();
     // Assert we're logged out again
     await expect(page.locator('button', { hasText: 'Login' })).toBeVisible();
   });
@@ -74,9 +74,9 @@ test.describe('Login', () => {
   test('Test Login failed - wrong api url', async ({ page }) => {
     await defaultMocks(page);
     await page.goto('/login');
-    await page.locator('.card-header:has-text("Tradescope bot Login")');
+    await page.locator('.card-header:has-text("Chaindrift bot Login")');
     await page.locator('input[id=name-input]').fill('TestBot');
-    await page.locator('input[id=username-input]').fill('Tradescoper');
+    await page.locator('input[id=username-input]').fill('Chaindriftr');
     await page.locator('input[id=password-input]').fill('SuperDuperBot');
 
     await page.route('**/api/v1/token/login', (route) => {
@@ -97,9 +97,9 @@ test.describe('Login', () => {
   test('Test Login failed - wrong password', async ({ page }) => {
     await defaultMocks(page);
     await page.goto('/login');
-    await page.locator('.card-header:has-text("Tradescope bot Login")');
+    await page.locator('.card-header:has-text("Chaindrift bot Login")');
     await page.locator('input[id=name-input]').fill('TestBot');
-    await page.locator('input[id=username-input]').fill('Tradescoper');
+    await page.locator('input[id=username-input]').fill('Chaindriftr');
     await page.locator('input[id=password-input]').fill('SuperDuperBot');
 
     await page.route('**/api/v1/token/login', (route) => {

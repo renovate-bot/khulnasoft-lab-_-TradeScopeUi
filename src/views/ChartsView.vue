@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import { useBotStore } from '@/stores/ftbotwrapper';
+
+const botStore = useBotStore();
+const strategy = ref('');
+const timerange = ref('');
+const selectedTimeframe = ref('');
+
+const finalTimeframe = computed<string>(() => {
+  return botStore.activeBot.isWebserverMode
+    ? selectedTimeframe.value || botStore.activeBot.strategy.timeframe || ''
+    : botStore.activeBot.timeframe;
+});
+
+const availablePairs = computed<string[]>(() => {
+  if (botStore.activeBot.isWebserverMode) {
+    if (finalTimeframe.value && finalTimeframe.value !== '') {
+      const tf = finalTimeframe.value;
+      return botStore.activeBot.pairlistWithTimeframe
+        .filter(([_, timeframe]) => {
+          // console.log(pair, timeframe, tf);
+          return timeframe === tf;
+        })
+        .map(([pair]) => pair);
+    }
+    return botStore.activeBot.pairlist;
+  }
+  return botStore.activeBot.whitelist;
+});
+
+onMounted(() => {
+  if (botStore.activeBot.isWebserverMode) {
+    // Get available pairs for all timeframes
+    botStore.activeBot.getAvailablePairs({});
+  } else if (!botStore.activeBot.whitelist || botStore.activeBot.whitelist.length === 0) {
+    botStore.activeBot.getWhitelist();
+  }
+});
+</script>
+
 <template>
   <div class="d-flex flex-column h-100">
     <!-- <div v-if="isWebserverMode" class="me-auto ms-3"> -->
@@ -32,48 +72,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useBotStore } from '@/stores/tsbotwrapper';
-
-const botStore = useBotStore();
-const strategy = ref('');
-const timerange = ref('');
-const selectedTimeframe = ref('');
-
-const finalTimeframe = computed<string>(() => {
-  return botStore.activeBot.isWebserverMode
-    ? selectedTimeframe.value || botStore.activeBot.strategy.timeframe || ''
-    : botStore.activeBot.timeframe;
-});
-
-const availablePairs = computed<string[]>(() => {
-  if (botStore.activeBot.isWebserverMode) {
-    if (finalTimeframe.value && finalTimeframe.value !== '') {
-      const tf = finalTimeframe.value;
-      return botStore.activeBot.pairlistWithTimeframe
-        .filter(([pair, timeframe]) => {
-          // console.log(pair, timeframe, tf);
-          return timeframe === tf;
-        })
-        .map(([pair]) => pair);
-    }
-    return botStore.activeBot.pairlist;
-  }
-  return botStore.activeBot.whitelist;
-});
-
-onMounted(() => {
-  if (botStore.activeBot.isWebserverMode) {
-    // this.refresh();
-    botStore.activeBot.getAvailablePairs({ timeframe: botStore.activeBot.timeframe });
-    // .then((val) => {
-    // console.log(val);
-    // });
-  } else if (!botStore.activeBot.whitelist || botStore.activeBot.whitelist.length === 0) {
-    botStore.activeBot.getWhitelist();
-  }
-});
-</script>
-
-<style scoped></style>

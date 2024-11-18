@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import { initBots, useBotStore } from '@/stores/tsbotwrapper';
+import { initBots, useBotStore } from '@/stores/ftbotwrapper';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,33 +12,33 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/trade',
-    name: 'Tradescope Trading',
+    name: 'Chaindrift Trading',
     component: () => import('@/views/TradingView.vue'),
   },
   {
     path: '/graph',
-    name: 'Tradescope Graph',
+    name: 'Chaindrift Graph',
     component: () => import('@/views/ChartsView.vue'),
   },
   {
     path: '/logs',
-    name: 'Tradescope Logs',
+    name: 'Chaindrift Logs',
     component: () => import('@/views/LogView.vue'),
   },
   {
     path: '/backtest',
-    name: 'Tradescope Backtest',
+    name: 'Chaindrift Backtest',
     component: () => import('@/views/BacktestingView.vue'),
   },
   {
     path: '/dashboard',
-    name: 'Tradescope Dashboard',
+    name: 'Chaindrift Dashboard',
     component: () => import('@/views/DashboardView.vue'),
   },
   {
     path: '/balance',
-    name: 'Tradescope Balance',
-    component: () => import('@/components/tsbot/BotBalance.vue'),
+    name: 'Chaindrift Balance',
+    component: () => import('@/components/ftbot/BotBalance.vue'),
   },
   {
     path: '/open_trades',
@@ -52,11 +52,11 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/pairlist',
-    component: () => import('@/components/tsbot/PairListLive.vue'),
+    component: () => import('@/components/ftbot/PairListLive.vue'),
   },
   {
     path: '/settings',
-    name: 'Tradescope Settings',
+    name: 'Chaindrift Settings',
     component: () => import('@/views/SettingsView.vue'),
   },
   {

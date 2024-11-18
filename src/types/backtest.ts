@@ -12,8 +12,8 @@ export interface BacktestPayload {
   dry_run_wallet?: number;
   enable_protections?: boolean;
   backtest_cache?: string;
-  tradeaimodel?: string;
-  tradeai?: {
+  chainaimodel?: string;
+  chainai?: {
     identifier: string;
   };
 }
@@ -77,6 +77,7 @@ export interface StrategyBacktestResult {
   results_per_pair: PairResult[];
   sell_reason_summary?: ExitReasonResults[];
   exit_reason_summary?: ExitReasonResults[] | PairResult[];
+  mix_tag_stats?: ExitReasonResults[];
   results_per_enter_tag: PairResult[];
   periodic_breakdown?: PeriodicBreakdown;
   left_open_trades: Trade[];
@@ -122,6 +123,8 @@ export interface StrategyBacktestResult {
   trailing_only_offset_is_reached: boolean;
   use_custom_stoploss: boolean;
   minimal_roi: Record<string, number>;
+  margin_mode?: 'cross' | 'isolated';
+  trading_mode?: 'spot' | 'futures';
 
   /** @deprecated - replaced by use_exit_signal 2.x */
   use_sell_signal?: boolean;

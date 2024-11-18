@@ -1,13 +1,3 @@
-<template>
-  <e-charts
-    v-if="trades"
-    ref="chart"
-    :option="cumProfitChartOptions"
-    :theme="settingsStore.chartTheme"
-    autoresize
-  />
-</template>
-
 <script setup lang="ts">
 import { EChartsOption } from 'echarts';
 import ECharts from 'vue-echarts';
@@ -24,7 +14,6 @@ import {
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 
-import { dataZoomPartial } from '@/shared/charts/chartZoom';
 import { useSettingsStore } from '@/stores/settings';
 import {
   ClosedTrade,
@@ -34,8 +23,6 @@ import {
   Trade,
 } from '@/types';
 import type { ComputedRefWithControl } from '@vueuse/core';
-
-import { formatPrice, timestampToDateString } from '@/shared/formatters';
 
 use([
   BarChart,
@@ -302,6 +289,16 @@ watch(
   },
 );
 </script>
+
+<template>
+  <ECharts
+    v-if="trades"
+    ref="chart"
+    :option="cumProfitChartOptions"
+    :theme="settingsStore.chartTheme"
+    autoresize
+  />
+</template>
 
 <style scoped>
 .echarts {

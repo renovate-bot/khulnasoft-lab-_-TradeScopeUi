@@ -101,16 +101,30 @@ test.describe('Trade', () => {
     await expect(page.getByText('Config reloaded successfully.')).toBeInViewport();
   });
   test('Trade page - drag and drop', async ({ page }) => {
-    await page.goto('/trade');
-
-    await page.locator('#avatar-drop').click();
-    const multiPane = page.locator('.drag-header', { hasText: 'Multi Pane' });
+    await Promise.all([
+      page.goto('/trade'),
+      // Wait for network requests
+      //  page.waitForResponse('**/ping'),
+      page.waitForResponse('**/status'),
+      page.waitForResponse('**/profit'),
+      page.waitForResponse('**/balance'),
+      //  page.waitForResponse('**/trades'),
+      page.waitForResponse('**/whitelist'),
+      page.waitForResponse('**/blacklist'),
+      page.waitForResponse('**/locks'),
+    ]);
+    // Wait for dynamic layout to settle
+    await page.waitForTimeout(1000);
+    const multiPane = await page.locator('.drag-header', { hasText: 'Multi Pane' });
 
     const multiPanebb = await multiPane.boundingBox();
 
-    await page.getByLabel('Lock layout').uncheck();
+    await page.locator('#avatar-drop').click();
+    await page.getByText('Lock layout').uncheck();
 
     const chartHeader = await page.locator('.drag-header:has-text("Chart")');
+    // Click outside of popup to ensure it's closed
+    // await chartHeader.click();
     await expect(multiPane).toBeInViewport();
     await expect(chartHeader).toBeInViewport();
 

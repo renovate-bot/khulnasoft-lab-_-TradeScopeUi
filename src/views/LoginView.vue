@@ -1,12 +1,12 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="container">
-    <b-card header="Tradescope bot Login">
+    <BCard header="Chaindrift bot Login">
       <BotLogin ref="loginForm" />
-    </b-card>
+    </BCard>
   </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style scoped>
 .container {

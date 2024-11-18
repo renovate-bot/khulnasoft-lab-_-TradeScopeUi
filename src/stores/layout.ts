@@ -1,5 +1,4 @@
 import { GridItemData } from '@/types';
-import { defineStore } from 'pinia';
 
 export enum TradeLayout {
   multiPane = 0,
@@ -118,7 +117,7 @@ export const useLayoutStore = defineStore('layoutStore', {
   },
   persist: {
     key: STORE_LAYOUTS,
-    afterRestore: (context) => {
+    afterHydrate: (context) => {
       if (
         context.store.dashboardLayout === null ||
         typeof context.store.dashboardLayout === 'string' ||
@@ -142,3 +141,6 @@ export const useLayoutStore = defineStore('layoutStore', {
     },
   },
 });
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useLayoutStore, import.meta.hot));
+}

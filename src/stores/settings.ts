@@ -1,11 +1,8 @@
-import { defineStore } from 'pinia';
-
-import { getCurrentTheme, getTheme } from '@/shared/themes';
 import axios from 'axios';
 import { UiVersion } from '@/types';
-import { TsWsMessageTypes } from '@/types/wsMessageTypes';
+import { FtWsMessageTypes } from '@/types/wsMessageTypes';
 
-const STORE_UI_SETTINGS = 'tsUISettings';
+const STORE_UI_SETTINGS = 'ftUISettings';
 
 export enum OpenTradeVizOptions {
   showPill = 'showPill',
@@ -14,10 +11,10 @@ export enum OpenTradeVizOptions {
 }
 
 const notificationDefaults = {
-  [TsWsMessageTypes.entryFill]: true,
-  [TsWsMessageTypes.exitFill]: true,
-  [TsWsMessageTypes.entryCancel]: true,
-  [TsWsMessageTypes.exitCancel]: true,
+  [FtWsMessageTypes.entryFill]: true,
+  [FtWsMessageTypes.exitFill]: true,
+  [FtWsMessageTypes.entryCancel]: true,
+  [FtWsMessageTypes.exitCancel]: true,
 };
 
 export const useSettingsStore = defineStore('uiSettings', {
@@ -27,12 +24,14 @@ export const useSettingsStore = defineStore('uiSettings', {
       openTradesInTitle: OpenTradeVizOptions.showPill as string,
       timezone: 'UTC',
       backgroundSync: true,
-      currentTheme: getCurrentTheme(),
+      currentTheme: 'dark',
       _uiVersion: 'dev',
       useHeikinAshiCandles: false,
+      useReducedPairCalls: true,
       notifications: notificationDefaults,
       profitDistributionBins: 20,
       confirmDialog: true,
+      chartLabelSide: 'right' as 'left' | 'right',
     };
   },
   getters: {
@@ -43,7 +42,7 @@ export const useSettingsStore = defineStore('uiSettings', {
       }
       return true;
     },
-    chartTheme(): string {
+    chartTheme(): 'dark' | 'light' {
       return this.isDarkTheme ? 'dark' : 'light';
     },
     uiVersion(state) {
@@ -67,3 +66,7 @@ export const useSettingsStore = defineStore('uiSettings', {
     key: STORE_UI_SETTINGS,
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useSettingsStore, import.meta.hot));
+}

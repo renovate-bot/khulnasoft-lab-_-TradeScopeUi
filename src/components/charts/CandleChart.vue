@@ -1,13 +1,4 @@
-<template>
-  <div class="chart-wrapper">
-    <e-charts v-if="hasData" ref="candleChart" :theme="theme" autoresize manual-update />
-  </div>
-</template>
-
 <script setup lang="ts">
-import { generateAreaCandleSeries, generateCandleSeries } from '@/shared/charts/candleChartSeries';
-import heikinashi from '@/shared/charts/heikinashi';
-import { generateTradeSeries } from '@/shared/charts/tradeChartData';
 import {
   ChartSliderPosition,
   ChartType,
@@ -19,8 +10,6 @@ import {
 
 import ECharts from 'vue-echarts';
 
-import { calculateDiff, getDiffColumnsFromPlotConfig } from '@/shared/charts/areaPlotDataset';
-import { dataZoomPartial } from '@/shared/charts/chartZoom';
 import { EChartsOption, ScatterSeriesOption } from 'echarts';
 import { BarChart, CandlestickChart, LineChart, ScatterChart } from 'echarts/charts';
 import {
@@ -43,7 +32,6 @@ import {
 } from 'echarts/components';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { timestampms } from '@/shared/formatters';
 
 use([
   AxisPointerComponent,
@@ -70,27 +58,25 @@ use([
   GraphicComponent,
 ]);
 
+const props = defineProps<{
+  trades: Trade[];
+  dataset: PairHistory;
+  heikinAshi: boolean;
+  useUTC: boolean;
+  plotConfig: PlotConfig;
+  theme: 'dark' | 'light';
+  sliderPosition: ChartSliderPosition | undefined;
+  colorUp: string;
+  colorDown: string;
+  labelSide: 'left' | 'right';
+}>();
+
+const isLabelLeft = computed(() => props.labelSide === 'left');
 // Chart default options
-const MARGINLEFT = '5.5%';
-const MARGINRIGHT = '1%';
+const MARGINLEFT = isLabelLeft.value ? '5.5%' : '1%';
+const MARGINRIGHT = isLabelLeft.value ? '1%' : '5.5%';
 const NAMEGAP = 55;
 const SUBPLOTHEIGHT = 8; // Value in %
-
-const props = defineProps({
-  trades: { required: false, default: () => [], type: Array as () => Trade[] },
-  dataset: { required: true, type: Object as () => PairHistory },
-  heikinAshi: { required: false, default: false, type: Boolean },
-  useUTC: { required: false, default: true, type: Boolean },
-  plotConfig: { required: true, type: Object as () => PlotConfig },
-  theme: { default: 'dark', type: String },
-  sliderPosition: {
-    required: false,
-    type: Object as () => ChartSliderPosition,
-    default: () => undefined,
-  },
-  colorUp: { required: false, type: String, default: '#12bb7b' },
-  colorDown: { required: false, type: String, default: '#ef5350' },
-});
 
 // Candle Colors
 const upColor = props.colorUp;
@@ -190,7 +176,7 @@ function updateChart(initial = false) {
     }
   }
   let dataset = props.heikinAshi
-    ? heikinashi(columns, props.dataset.data)
+    ? heikinAshiDataset(columns, props.dataset.data)
     : props.dataset.data.slice();
 
   diffCols.value.forEach(([colFrom, colTo]) => {
@@ -264,6 +250,9 @@ function updateChart(initial = false) {
         itemStyle: {
           color: buySignalColor,
         },
+        tooltip: {
+          valueFormatter: (value) => (value ? `Long entry ${value}` : ''),
+        },
         encode: {
           x: colDate,
           y: colEntryData,
@@ -286,6 +275,9 @@ function updateChart(initial = false) {
         yAxisIndex: 0,
         itemStyle: {
           color: sellSignalColor,
+        },
+        tooltip: {
+          valueFormatter: (value) => (value ? `Long exit ${value}` : ''),
         },
         encode: {
           x: colDate,
@@ -310,6 +302,7 @@ function updateChart(initial = false) {
           color: shortEntrySignalColor,
         },
         tooltip: {
+          valueFormatter: (value) => (value ? `Short entry ${value}` : ''),
           // Hide tooltip - it's already there for longs.
           // show: false,
         },
@@ -332,8 +325,7 @@ function updateChart(initial = false) {
           color: shortexitSignalColor,
         },
         tooltip: {
-          // Hide tooltip - it's already there for longs.
-          // show: false,
+          valueFormatter: (value) => (value ? `Short exit ${value}` : ''),
         },
         encode: {
           x: colDate,
@@ -391,9 +383,13 @@ function updateChart(initial = false) {
           scale: true,
           gridIndex: currGridIdx,
           name: key,
+          position: props.labelSide,
           nameLocation: 'middle',
           nameGap: NAMEGAP,
-          axisLabel: { show: true },
+          axisLabel: {
+            show: true,
+            hideOverlap: true,
+          },
           axisLine: { show: false },
           axisTick: { show: false },
           splitLine: { show: false },
@@ -478,7 +474,8 @@ function updateChart(initial = false) {
 
   const nameTrades = 'Trades';
   if (!Array.isArray(chartOptions.value.legend) && chartOptions.value.legend?.data) {
-    chartOptions.value.legend.data.push(nameTrades);
+    // Insert trades into legend, after the default columns
+    chartOptions.value.legend.data.splice(4, 0, nameTrades);
   }
   const tradesSeries: ScatterSeriesOption = generateTradeSeries(
     nameTrades,
@@ -515,6 +512,12 @@ function initializeChartOptions() {
       // Initial legend, further entries are pushed to the below list
       data: ['Candles', 'Volume', 'Entry', 'Exit'],
       right: '1%',
+      type: 'scroll',
+      pageTextStyle: {
+        color: props.theme === 'dark' ? '#dedede' : '#333',
+      },
+      pageIconColor: props.theme === 'dark' ? '#aaa' : '#2f4554',
+      pageIconInactiveColor: props.theme === 'dark' ? '#2f4554' : '#aaa',
     },
     tooltip: {
       show: true,
@@ -588,6 +591,7 @@ function initializeChartOptions() {
         min: (value) => {
           return value.min - (value.max - value.min) * 0.04;
         },
+        position: props.labelSide,
       },
       {
         scale: true,
@@ -595,7 +599,7 @@ function initializeChartOptions() {
         splitNumber: 2,
         name: 'volume',
         nameLocation: 'middle',
-        // position: 'right',
+        position: props.labelSide,
         nameGap: NAMEGAP,
         axisLabel: { show: false },
         axisLine: { show: false },
@@ -645,12 +649,10 @@ function initializeChartOptions() {
 function updateSliderPosition() {
   if (!props.sliderPosition) return;
 
-  const start = timestampms(props.sliderPosition.startValue - props.dataset.timeframe_ms * 40);
-  const end = timestampms(
-    props.sliderPosition.endValue
-      ? props.sliderPosition.endValue + props.dataset.timeframe_ms * 40
-      : props.sliderPosition.startValue + props.dataset.timeframe_ms * 80,
-  );
+  const start = props.sliderPosition.startValue - props.dataset.timeframe_ms * 40;
+  const end = props.sliderPosition.endValue
+    ? props.sliderPosition.endValue + props.dataset.timeframe_ms * 40
+    : props.sliderPosition.startValue + props.dataset.timeframe_ms * 80;
   if (candleChart.value) {
     candleChart.value.dispatchAction({
       type: 'dataZoom',
@@ -715,11 +717,13 @@ watch(
 );
 </script>
 
-<style scoped>
-.chart-wrapper {
-  width: 100%;
-  height: 100%;
-}
+<template>
+  <div class="h-100 w-100">
+    <ECharts v-if="hasData" ref="candleChart" :theme="theme" autoresize manual-update />
+  </div>
+</template>
+
+<style scoped lang="scss">
 .echarts {
   width: 100%;
   min-height: 200px;

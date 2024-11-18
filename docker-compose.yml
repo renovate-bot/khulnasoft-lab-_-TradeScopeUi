@@ -1,12 +1,12 @@
 ---
-version: '3.8'
 services:
-  tradeui:
-    build:
-      context: .
-      dockerfile: "./Dockerfile"
-    # image: tradeui
-    image: khulnasoft/tradeui:main
+  chainui:
+    # Uncomment the following lines to build the image locally
+    # build:
+    #   context: .
+    #   dockerfile: "./Dockerfile"
+    # image: chainui
+    image: khulnasoft/chainui:latest
     restart: unless-stopped
     ports:
       - "3000:80"

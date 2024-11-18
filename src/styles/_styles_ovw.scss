@@ -263,6 +263,10 @@
         background-size: 16px 12px;
         background-repeat: no-repeat;
         background-position: right 0.75rem center;
+        &:disabled {
+            color: darken($fg-color, 30%);
+            background: lighten($bg-dark, 10%);
+        }
     }
 
     .toast {
@@ -310,10 +314,10 @@
     background-color: unset !important;
 }
 
-body.ts-theme-transition,
-body.ts-theme-transition *,
-body.ts-theme-transition *:before,
-body.ts-theme-transition *:after {
+body.ft-theme-transition,
+body.ft-theme-transition *,
+body.ft-theme-transition *:before,
+body.ft-theme-transition *:after {
     transition:
         background 750ms ease-in-out,
         border-color 750ms ease-in-out,

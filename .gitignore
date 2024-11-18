@@ -3,7 +3,6 @@ node_modules
 package-lock.json
 /dist
 
-cypress/screenshots/*
 
 # local env files
 .env.local
@@ -25,7 +24,6 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
@@ -33,7 +31,6 @@ yarn-error.log*
 *.sw?
 
 
-components.d.ts
 /test-results/
 /playwright-report/
 /blob-report/

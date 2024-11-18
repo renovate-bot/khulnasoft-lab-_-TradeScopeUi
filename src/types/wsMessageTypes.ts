@@ -1,4 +1,4 @@
-export enum TsWsMessageTypes {
+export enum FtWsMessageTypes {
   exception = 'exception',
 
   whitelist = 'whitelist',
@@ -10,64 +10,64 @@ export enum TsWsMessageTypes {
   newCandle = 'new_candle',
 }
 
-export interface TsBaseWsMessage {
-  type: TsWsMessageTypes;
+export interface FtBaseWsMessage {
+  type: FtWsMessageTypes;
 }
 
-export interface TsWhitelistMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.whitelist;
+export interface FtWhitelistMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.whitelist;
   data: string[];
 }
 
-export interface TsEntryFillMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.entryFill;
+export interface FtEntryFillMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.entryFill;
   pair: string;
   open_rate: number;
   amount: number;
   // ...
 }
 
-export interface TsExitFillMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.exitFill;
+export interface FtExitFillMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.exitFill;
   pair: string;
   open_rate: number;
   amount: number;
   // ...
 }
 
-export interface TSEntryCancelMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.entryCancel;
+export interface FTEntryCancelMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.entryCancel;
   pair: string;
   reason: string;
   direction: string;
   // ...
 }
 
-export interface TSExitCancelMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.exitCancel;
+export interface FTExitCancelMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.exitCancel;
   pair: string;
   reason: string;
   direction: string;
   // ...
 }
 
-export interface TsNewCandleMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.newCandle;
+export interface FtNewCandleMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.newCandle;
   /** Pair, timeframe, candletype*/
   data: [string, string, string];
   // ...
 }
 
-export interface TsErrorMessage extends TsBaseWsMessage {
-  type: TsWsMessageTypes.exception;
+export interface FtErrorMessage extends FtBaseWsMessage {
+  type: FtWsMessageTypes.exception;
   data: string;
 }
 
-export type TSWsMessage =
-  | TsErrorMessage
-  | TsWhitelistMessage
-  | TsEntryFillMessage
-  | TSEntryCancelMessage
-  | TsExitFillMessage
-  | TSExitCancelMessage
-  | TsNewCandleMessage;
+export type FTWsMessage =
+  | FtErrorMessage
+  | FtWhitelistMessage
+  | FtEntryFillMessage
+  | FTEntryCancelMessage
+  | FtExitFillMessage
+  | FTExitCancelMessage
+  | FtNewCandleMessage;

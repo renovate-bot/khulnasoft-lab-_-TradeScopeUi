@@ -1,14 +1,4 @@
-<template>
-  <span :title="timezoneTooltip">{{ formattedDate }}</span>
-</template>
-
 <script setup lang="ts">
-import {
-  timestampmsOrNa,
-  timestampmsWithTimezone,
-  timestampToDateString,
-} from '@/shared/formatters';
-
 const props = defineProps({
   date: { required: true, type: Number },
   showTimezone: { required: false, type: Boolean, default: false },
@@ -35,4 +25,6 @@ const timezoneTooltip = computed((): string => {
 });
 </script>
 
-<style scoped></style>
+<template>
+  <span :title="timezoneTooltip">{{ formattedDate }}</span>
+</template>

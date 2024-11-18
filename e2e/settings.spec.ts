@@ -11,7 +11,7 @@ test.describe('Settings', () => {
       // page.waitForResponse('**/ShowConf'),
     ]);
     // await expect(page.locator('li', { hasText: 'Online' })).toBeInViewport();
-    await expect(page.locator('h1', { hasText: 'Welcome to the Tradescope UI' })).toBeInViewport({
+    await expect(page.locator('h1', { hasText: 'Welcome to the Chaindrift UI' })).toBeInViewport({
       timeout: 5000,
     });
 
@@ -20,13 +20,13 @@ test.describe('Settings', () => {
       .isVisible()
       .then(() => page.locator('[id=avatar-drop]').click());
     await page.locator('.dropdown-menu > * > [href="/settings"]').click();
-    await expect(page.locator(':text("TradeUI Settings")')).toBeVisible();
+    await expect(page.locator(':text("ChainUI Settings")')).toBeVisible();
 
     // Switch option in the settings.
     await page.locator('select').first().selectOption('asTitle');
 
     const settings = await page.evaluate(() =>
-      JSON.parse(window.localStorage.getItem('tsUISettings') || '{}'),
+      JSON.parse(window.localStorage.getItem('ftUISettings') || '{}'),
     );
     await expect(settings['openTradesInTitle']).toBe('asTitle');
   });

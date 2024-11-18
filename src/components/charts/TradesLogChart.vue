@@ -1,12 +1,3 @@
-<template>
-  <e-charts
-    v-if="trades.length > 0"
-    :option="chartOptions"
-    autoresize
-    :theme="settingsStore.chartTheme"
-  />
-</template>
-
 <script setup lang="ts">
 import ECharts from 'vue-echarts';
 import { EChartsOption } from 'echarts';
@@ -27,8 +18,6 @@ import {
 import { ClosedTrade } from '@/types';
 import { useSettingsStore } from '@/stores/settings';
 
-import { timestampms } from '@/shared/formatters';
-import { dataZoomPartial } from '@/shared/charts/chartZoom';
 import { useColorStore } from '@/stores/colors';
 
 use([
@@ -179,6 +168,15 @@ const chartOptions = computed((): EChartsOption => {
   };
 });
 </script>
+
+<template>
+  <ECharts
+    v-if="trades.length > 0"
+    :option="chartOptions"
+    autoresize
+    :theme="settingsStore.chartTheme"
+  />
+</template>
 
 <style scoped>
 .echarts {

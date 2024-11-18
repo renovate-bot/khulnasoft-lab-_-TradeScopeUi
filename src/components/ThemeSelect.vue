@@ -1,9 +1,3 @@
-<template>
-  <b-nav-item @click="toggleNight">
-    <i-mdi-brightness-6 />
-  </b-nav-item>
-</template>
-
 <script setup lang="ts">
 import { useSettingsStore } from '@/stores/settings';
 import { useColorMode } from 'bootstrap-vue-next';
@@ -22,9 +16,9 @@ const setTheme = (themeName: string) => {
     // const styles = document.getElementsByTagName('style');
     if (activeTheme.value) {
       // Only transition if simple mode is active
-      document.body.classList.add('ts-theme-transition');
+      document.body.classList.add('ft-theme-transition');
       window.setTimeout(() => {
-        document.body.classList.remove('ts-theme-transition');
+        document.body.classList.remove('ft-theme-transition');
       }, 1000);
     }
     mode.value = themeName.toLowerCase() === 'bootstrap' ? 'light' : 'dark';
@@ -43,4 +37,8 @@ const toggleNight = () => {
 };
 </script>
 
-<style scoped></style>
+<template>
+  <BNavItem @click="toggleNight">
+    <i-mdi-brightness-6 />
+  </BNavItem>
+</template>

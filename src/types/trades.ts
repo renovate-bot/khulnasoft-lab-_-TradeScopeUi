@@ -3,9 +3,9 @@ import { TradingMode } from './types';
 export interface BTOrder {
   amount: number;
   safe_price: number;
-  ts_order_side: string;
+  ft_order_side: string;
   order_filled_timestamp?: number;
-  ts_is_entry: boolean;
+  ft_is_entry: boolean;
 }
 
 export interface Order extends BTOrder {
@@ -18,14 +18,14 @@ export interface Order extends BTOrder {
   order_type: string;
   is_open: boolean;
   order_timestamp?: number;
-  ts_fee_base?: number;
+  ft_fee_base?: number;
   /** Tag assigned to this order */
-  ts_order_tag?: string;
+  ft_order_tag?: string;
 }
 
 interface TradeBase {
   /**
-   * corresponds to the UI (tsbot.1) - does NOT relate to the backend!
+   * corresponds to the UI (ftbot.1) - does NOT relate to the backend!
    */
   botId: string;
   /**
@@ -111,6 +111,7 @@ interface TradeBase {
   amount_precision?: number;
   price_precision?: number;
   precision_mode?: number;
+  precision_mode_price?: number;
 
   orders?: Order[];
 }

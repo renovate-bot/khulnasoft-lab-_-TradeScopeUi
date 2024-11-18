@@ -4,9 +4,9 @@ export async function setLoginInfo(page) {
   await page.goto('/');
   await page.evaluate(() => {
     localStorage.setItem(
-      'tsAuthLoginInfo',
+      'ftAuthLoginInfo',
       JSON.stringify({
-        'tsbot.0': {
+        'ftbot.0': {
           botName: 'TestBot',
           apiUrl: 'http://localhost:3000',
           accessToken: 'access_token_tesst',
@@ -15,7 +15,7 @@ export async function setLoginInfo(page) {
         },
       }),
     );
-    localStorage.setItem('tsSelectedBot', 'tsbot.0');
+    localStorage.setItem('ftSelectedBot', 'ftbot.0');
   });
 }
 
@@ -29,7 +29,7 @@ interface mockArray {
 function mockRequests(page, mocks: mockArray[]) {
   mocks.forEach((item) => {
     page.route(item.url, (route) => {
-      return route.fulfill({ path: `./cypress/fixtures/${item.fixture}` });
+      return route.fulfill({ path: `./e2e/testData/${item.fixture}` });
     });
   });
 }

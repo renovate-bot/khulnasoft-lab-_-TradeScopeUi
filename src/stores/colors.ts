@@ -1,6 +1,4 @@
-import { defineStore } from 'pinia';
-
-const STORE_UI_COLORS = 'tsUIColorSettings';
+const STORE_UI_COLORS = 'ftUIColorSettings';
 
 export enum ColorPreferences {
   GREEN_UP = 'greenUp',
@@ -38,6 +36,10 @@ export const useColorStore = defineStore('colorStore', {
   },
   persist: {
     key: STORE_UI_COLORS,
-    paths: ['colorPreference'],
+    pick: ['colorPreference'],
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useColorStore, import.meta.hot));
+}

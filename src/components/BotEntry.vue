@@ -1,61 +1,5 @@
-<template>
-  <div v-if="bot" class="d-flex align-items-center justify-content-between w-100">
-    <span class="me-2">{{ bot.botName || bot.botId }}</span>
-
-    <div class="align-items-center d-flex">
-      <b-form-checkbox
-        v-model="autoRefreshLoc"
-        class="ms-auto float-end me-2 my-auto mt-1"
-        title="AutoRefresh"
-        variant="secondary"
-        switch
-        @update:model-value="changeEvent"
-      >
-        <div
-          v-if="botStore.botStores[bot.botId].isBotLoggedIn"
-          :title="botStore.botStores[bot.botId].isBotOnline ? 'Online' : 'Offline'"
-        >
-          <i-mdi-circle
-            class="ms-2 me-1 align-middle"
-            :class="botStore.botStores[bot.botId].isBotOnline ? 'online' : 'offline'"
-          />
-        </div>
-        <div v-else title="Login info expired, please login again.">
-          <i-mdi-cancel class="offline" />
-        </div>
-      </b-form-checkbox>
-      <div v-if="!noButtons" class="float-end d-flex flex-align-center">
-        <b-button
-          v-if="botStore.botStores[bot.botId].isBotLoggedIn"
-          class="ms-1"
-          size="sm"
-          title="Edit bot"
-          @click="$emit('edit')"
-        >
-          <i-mdi-pencil />
-        </b-button>
-        <b-button v-else class="ms-1" size="sm" title="Login again" @click="$emit('editLogin')">
-          <i-mdi-login />
-        </b-button>
-        <b-button class="ms-1" size="sm" title="Delete bot" @click="botRemoveModalVisible = true">
-          <i-mdi-delete />
-        </b-button>
-      </div>
-    </div>
-    <b-modal
-      v-if="!noButtons"
-      id="removeBotModal"
-      v-model="botRemoveModalVisible"
-      title="Logout confirmation"
-      @ok="confirmRemoveBot"
-    >
-      Really remove (logout) from {{ bot.botName }} ({{ bot.botId }})?
-    </b-modal>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { useBotStore } from '@/stores/tsbotwrapper';
+import { useBotStore } from '@/stores/ftbotwrapper';
 import { BotDescriptor } from '@/types';
 import type { CheckboxValue } from 'bootstrap-vue-next';
 
@@ -63,7 +7,7 @@ const props = defineProps({
   bot: { required: true, type: Object as () => BotDescriptor },
   noButtons: { default: false, type: Boolean },
 });
-defineEmits(['edit', 'editLogin']);
+defineEmits<{ edit: []; editLogin: [] }>();
 const botStore = useBotStore();
 
 const changeEvent = (v: CheckboxValue) => {
@@ -85,6 +29,63 @@ const autoRefreshLoc = computed({
   },
 });
 </script>
+
+<template>
+  <div v-if="bot" class="d-flex align-items-center justify-content-between w-100">
+    <span class="me-2">{{ bot.botName || bot.botId }}</span>
+
+    <div class="d-flex align-items-center">
+      <BFormCheckbox
+        v-model="autoRefreshLoc"
+        input-class="ms-auto my-auto"
+        title="AutoRefresh"
+        variant="secondary"
+        switch
+        @update:model-value="changeEvent"
+      >
+        <div
+          v-if="botStore.botStores[bot.botId].isBotLoggedIn"
+          :title="botStore.botStores[bot.botId].isBotOnline ? 'Online' : 'Offline'"
+        >
+          <i-mdi-circle
+            class="ms-2 me-1 align-middle"
+            :class="botStore.botStores[bot.botId].isBotOnline ? 'online' : 'offline'"
+          />
+        </div>
+        <div v-else title="Login info expired, please login again.">
+          <i-mdi-cancel class="offline" />
+        </div>
+      </BFormCheckbox>
+
+      <div v-if="!noButtons" class="float-end d-flex flex-align-center">
+        <BButton
+          v-if="botStore.botStores[bot.botId].isBotLoggedIn"
+          class="ms-1"
+          size="sm"
+          title="Edit bot"
+          @click="$emit('edit')"
+        >
+          <i-mdi-pencil />
+        </BButton>
+        <BButton v-else class="ms-1" size="sm" title="Login again" @click="$emit('editLogin')">
+          <i-mdi-login />
+        </BButton>
+        <BButton class="ms-1" size="sm" title="Delete bot" @click="botRemoveModalVisible = true">
+          <i-mdi-delete />
+        </BButton>
+      </div>
+    </div>
+    <BModal
+      v-if="!noButtons"
+      id="removeBotModal"
+      v-model="botRemoveModalVisible"
+      title="Logout confirmation"
+      @ok="confirmRemoveBot"
+    >
+      Really remove (logout) from {{ bot.botName }} ({{ bot.botId }})?
+    </BModal>
+  </div>
+</template>
 
 <style scoped lang="scss">
 .form-switch {

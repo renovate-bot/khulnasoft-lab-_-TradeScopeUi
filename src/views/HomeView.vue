@@ -1,35 +1,35 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="home">
     <div class="d-flex justify-content-center">
-      <bot-list />
+      <BotList />
     </div>
     <hr />
-    <!-- <img alt="Tradescope logo" src="../assets/tradescope-logo.png" width="450px" class="my-5" /> -->
-    <div title="Tradescope logo" class="logo-svg my-5 mx-auto" />
+    <!-- <img alt="Chaindrift logo" src="../assets/chaindrift-logo.png" width="450px" class="my-5" /> -->
+    <div title="Chaindrift logo" class="logo-svg my-5 mx-auto" />
     <div>
-      <h1>Welcome to the Tradescope UI</h1>
+      <h1>Welcome to the Chaindrift UI</h1>
     </div>
     <div>This page allows you to control your trading bot.</div>
     <br />
     <p>
       If you need any help, please refer to the
-      <a href="https://www.tradescope.io/en/latest/">Tradescope Documentation</a>.
+      <a href="https://www.chaindrift.io/en/latest/">Chaindrift Documentation</a>.
     </p>
 
-    <p>Have fun - <i>wishes you the Tradescope team</i></p>
+    <p>Have fun - <i>wishes you the Chaindrift team</i></p>
   </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 .home {
   margin-top: 1.5em;
 }
 .logo-svg {
-  -webkit-mask: url(../assets/tradescope-logo-mask.png) no-repeat center;
+  -webkit-mask: url(../assets/chaindrift-logo-mask.png) no-repeat center;
   -webkit-mask-size: 240px 240px;
-  mask: url(../assets/tradescope-logo-mask.png) no-repeat center;
+  mask: url(../assets/chaindrift-logo-mask.png) no-repeat center;
   mask-size: contain;
   width: 250px;
   height: 250px;
