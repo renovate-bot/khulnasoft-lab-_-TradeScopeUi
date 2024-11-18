@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@noction/vue-draggable-grid':
-        specifier: 1.9.16
-        version: 1.9.16(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
+        specifier: 1.11.0
+        version: 1.11.0(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -544,8 +544,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@noction/vue-draggable-grid@1.9.16':
-    resolution: {integrity: sha512-aXezq1P2tBNnKwlo10JTmVvNlrV9gej0h87CMMmFbstkn8fm7XTyCmtz9b3spDrnJKtyvBxsfaW1ZiW9weI3AA==}
+  '@noction/vue-draggable-grid@1.11.0':
+    resolution: {integrity: sha512-9gzDF1sNE7Xll3oPJRhklrB9n9L5xl80/UIVoE+ARJjBv6ow9YWiFU6RtqjPXZm57BKMrmrbwiJfBfP6AztImA==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -1742,9 +1742,6 @@ packages:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
 
-  mitt@3.0.1:
-    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
-
   mkdirp@1.0.4:
     resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
     engines: {node: '>=10'}
@@ -2775,7 +2772,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@noction/vue-draggable-grid@1.9.16(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))':
+  '@noction/vue-draggable-grid@1.11.0(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))':
     dependencies:
       '@interactjs/actions': 1.10.27(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)
       '@interactjs/auto-start': 1.10.27(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)
@@ -2784,7 +2781,6 @@ snapshots:
       '@interactjs/modifiers': 1.10.27(@interactjs/core@1.10.27(@interactjs/utils@1.10.27))(@interactjs/utils@1.10.27)
       '@types/element-resize-detector': 1.1.6
       element-resize-detector: 1.2.4
-      mitt: 3.0.1
       vue: 3.5.13(typescript@5.6.3)
     transitivePeerDependencies:
       - '@interactjs/core'
@@ -3997,8 +3993,6 @@ snapshots:
     dependencies:
       minipass: 3.3.6
       yallist: 4.0.0
-
-  mitt@3.0.1: {}
 
   mkdirp@1.0.4: {}
 
